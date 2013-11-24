@@ -42,30 +42,30 @@
             </div>
             <form class="form-horizontal" ng-show="showForm">
                <div class="form-group" ng-repeat="diner in diners">
-                  <div class="col-lg-5">
+                  <div class="col-xs-5">
                      <input class="form-control form-right" ng-model="diner.name">
                   </div>
-                  <div class="col-lg-5">
+                  <div class="col-xs-5">
                      <input type="text" class="form-control" ng-model="diner.amount">
                   </div>
-                  <div class="col-lg-2">
+                  <div class="col-xs-2">
                      <button ng-click="removeDiner($index)" class="btn btn-danger">
                         <i class="icon-remove"></i>
                      </button>
                   </div>
                </div>
                <div class="form-group">
-                  <div class="col-lg-offset-10 col-sm-2">
+                  <div class="col-xs-offset-10 col-sm-2">
                      <button ng-click="addDiner()" class="btn btn-info">
                         <i class="icon-plus"></i>
                      </button>
                   </div>
                </div>
                <div class="form-group">
-                  <div class="col-lg-2 col-lg-offset-3">
+                  <div class="col-xs-2 col-xs-offset-3">
                      <h4>Total: ${{ getTotal() }}</h4>
                   </div>
-                  <div class="col-lg-2">
+                  <div class="col-xs-2">
                      <button ng-click="betBill()" class="btn btn-success">Bet the Bill</button>
                   </div>
                </div>
@@ -83,7 +83,7 @@
          </div>
 
       <div class="footer">
-        <p>&copy; Ted Sanders and Niru Maheswaranathan 2013</p>
+        <p>created by Ted Sanders and Niru Maheswaranathan</p>
       </div>
 
 		 </div> <!-- /container -->
