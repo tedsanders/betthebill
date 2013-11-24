@@ -1,9 +1,14 @@
 <!doctype html>
-<html ng-app="bet-the-bill">
-
+<html lang="en" ng-app="bet-the-bill">
+   
    <head>
-			<meta charset="utf-8">
+      <!-- meta -->
+      <meta charset="utf-8">
       <title>Bet the Bill</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="description" content="Bet the Bill: a fair, randomized way of splitting the bill when out with friends">
+      <meta name="author" content="Ted Sanders and Niru Maheswaranathan">
+      <!--<link rel="shortcut icon" href="ico/favicon.png">-->
       <!-- javascript -->
       <script src="bower_components/angular/angular.js" type="text/javascript"></script>
       <script src="bower_components/jquery/jquery.min.js" type="text/javascript"></script>
@@ -12,55 +17,60 @@
       <!-- css -->
       <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
       <link href="bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-			<link href="bet-the-bill/styles.css" rel="stylesheet" type="text/css">
+      <link href="bet-the-bill/styles.css" rel="stylesheet" type="text/css">
    </head>
-
+   
    <body>
       <div class="container">
-         <div class="row">
-            <div class="col-md-10">
-               <h1>Bet the Bill</h1>
-            </div>
+         <div class="header">
+            <ul class="nav nav-pills pull-right">
+               <li class="active">
+                  <a href="#">Home</a>
+               </li>
+               <li>
+                  <a href="about.html">About</a>
+               </li>
+            </ul>
+            <h3 class="text-muted">Bet the Bill</h3>
          </div>
-         <div class="row" ng-controller="DinerCtrl">
 
-						 <div class="result" ng-show="showResult">
-								 <h3>{{ loser.name }} who owed {{ parseAmt(loser.amount) }} has to pay the total of {{ getTotal() }} (for a loss of {{ parseAmt(getTotal() - parseAmt(loser.amount)) }}!)</h3>
-						 </div>
-
+         <div class="row marketing" ng-controller="DinerCtrl">
+            <div class="result" ng-show="showResult">
+               <h3>{{ loser.name }} who owed {{ parseAmt(loser.amount) }} has to pay the total of
+                  {{ getTotal() }} (for a loss of {{ parseAmt(getTotal() - parseAmt(loser.amount))
+                  }}!)</h3>
+            </div>
             <form class="form-horizontal" ng-show="showForm">
                <div class="form-group" ng-repeat="diner in diners">
-
-										 <div class="col-sm-2"><input class="form-control form-right" ng-model="diner.name"></div>
-
-                     <div class="col-sm-2">
-                        <input type="text" class="form-control" ng-model="diner.amount">
-                     </div>
-                     <div class="col-sm-1">
-                        <button ng-click="removeDiner($index)" class="btn btn-danger">
-                           <i class="icon-remove"></i>
-                        </button>
-                     </div>
-               </div>
-               <div class="form-group">
-                  <div class="col-sm-offset-4 col-sm-1">
-											<button ng-click="addDiner()" class="btn btn-info"><i class="icon-plus"></i></button>
+                  <div class="col-lg-5">
+                     <input class="form-control form-right" ng-model="diner.name">
+                  </div>
+                  <div class="col-lg-5">
+                     <input type="text" class="form-control" ng-model="diner.amount">
+                  </div>
+                  <div class="col-lg-2">
+                     <button ng-click="removeDiner($index)" class="btn btn-danger">
+                        <i class="icon-remove"></i>
+                     </button>
                   </div>
                </div>
                <div class="form-group">
-									<div class="col-sm-1 col-sm-offset-1 form-right">
-											<h4>Total</h4>
-									</div>
-									<div class="col-sm-2">
-											<h4>${{ getTotal() }}</h4>
-									</div>
-                  <div class="col-sm-1">
+                  <div class="col-lg-offset-10 col-sm-2">
+                     <button ng-click="addDiner()" class="btn btn-info">
+                        <i class="icon-plus"></i>
+                     </button>
+                  </div>
+               </div>
+               <div class="form-group">
+                  <div class="col-lg-2 col-lg-offset-3">
+                     <h4>Total: ${{ getTotal() }}</h4>
+                  </div>
+                  <div class="col-lg-2">
                      <button ng-click="betBill()" class="btn btn-success">Bet the Bill</button>
                   </div>
                </div>
             </form>
-
-						<form class="form-horizontal" ng-hide="showForm">
+            <form class="form-horizontal" ng-hide="showForm">
                <div class="form-group">
                   <div class="col-sm-1">
                      <button ng-click="goBack()" class="btn btn-default">Go Back</button>
@@ -69,9 +79,14 @@
                      <button ng-click="startOver()" class="btn btn-danger">Start Over</button>
                   </div>
                </div>
-					 </form>
-
+            </form>
          </div>
+
+      <div class="footer">
+        <p>&copy; Ted Sanders and Niru Maheswaranathan 2013</p>
+      </div>
+
+		 </div> <!-- /container -->
    </body>
 
 </html>
