@@ -78,4 +78,13 @@ body {
   }
 }
 
+/* form validation */
+input.ng-invalid.ng-dirty {
+		border: 1px solid #FA787E;
+}
+
+input.ng-valid.ng-dirty {
+		border: 1px solid #58CAC9;
+}
+
 #carbonads-container {display:none} h1[id] {padding-top:0px; margin-top:20px} .bs-old-docs {display:none} .bs-social {display:none} .col-md-3 {display:none !important} .col-md-9 {width:100% !important} .navbar-fixed-top {position:absolute !important}
