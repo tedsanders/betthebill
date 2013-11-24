@@ -34,7 +34,7 @@
             <h3 class="text-muted">Bet the Bill</h3>
          </div>
 
-         <div class="row marketing" ng-controller="DinerCtrl">
+         <div class="row marketing animate-create" ng-controller="DinerCtrl">
             <div class="result" ng-show="showResult">
                <h3>{{ loser.name }} who owed {{ parseAmt(loser.amount) }} has to pay the total of
                   {{ getTotal() }} (for a loss of {{ parseAmt(getTotal() - parseAmt(loser.amount))
