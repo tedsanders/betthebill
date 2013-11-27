@@ -35,10 +35,9 @@
          </div>
 
          <div class="row marketing animate-create" ng-controller="DinerCtrl">
+
             <div class="result" ng-show="showResult">
-               <h3>{{ loser.name }} who owed {{ parseAmt(loser.amount) }} has to pay the total of
-                  {{ getTotal() }} (for a loss of {{ parseAmt(getTotal() - parseAmt(loser.amount))
-                  }}!)</h3>
+               <h3>{{ loser.name }} who owed {{ loser.amount | currency }} has to pay the total of {{ total() | currency}}</h3>
             </div>
             <form class="form-horizontal" ng-show="showForm">
                <div class="form-group" ng-repeat="diner in diners">
@@ -50,20 +49,20 @@
                   </div>
                   <div class="col-xs-2">
                      <button ng-click="removeDiner($index)" class="btn btn-danger">
-                        <i class="icon-remove"></i>
+                        <i class="fa fa-times"></i>
                      </button>
                   </div>
                </div>
                <div class="form-group">
                   <div class="col-xs-offset-10 col-sm-2">
                      <button ng-click="addDiner()" class="btn btn-info">
-                        <i class="icon-plus"></i>
+                        <i class="fa fa-plus"></i>
                      </button>
                   </div>
                </div>
                <div class="form-group">
                   <div class="col-xs-5">
-                     <h4 class="pull-right">Total: ${{ getTotal() }}</h4>
+                     <h4 class="pull-right">Total: ${{ total() }}</h4>
                   </div>
                   <div class="col-xs-2">
                      <button ng-click="betBill()" class="btn btn-success">Bet the Bill</button>
