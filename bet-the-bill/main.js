@@ -3,7 +3,7 @@ var app = angular.module('bet-the-bill', []);
 function DinerCtrl($scope) {
 
 	 // d3 colors
-	 var getcolor = d3.scale.category10()
+	 var getcolor = d3.scale.category20()
 
    // Initialize
    $scope.showResult = false;
