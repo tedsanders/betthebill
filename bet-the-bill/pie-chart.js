@@ -16,7 +16,7 @@ var w = 600,                       // width and height, natch
     arc = d3.svg.arc().innerRadius(0).outerRadius(r - 20);
 
 // ---------------------------------------------------------------------
-var svg = d3.select("#sixth-pie").append("svg:svg")
+var svg = d3.select("#pie-chart").append("svg:svg")
     .attr("width", w).attr("height", h);
 
 var arc_grp = svg.append("svg:g")
