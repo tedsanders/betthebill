@@ -14,6 +14,7 @@
       <script src="bower_components/jquery/jquery.min.js" type="text/javascript"></script>
       <script src="bower_components/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
       <script src="bet-the-bill/main.js" type="text/javascript"></script>
+      <script src="bower_components/d3/d3.min.js" type="text/javascript"></script>
       <!-- css -->
       <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
       <link href="bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -37,7 +38,7 @@
          <div class="row marketing animate-create" ng-controller="DinerCtrl">
 
             <div class="result" ng-show="showResult">
-               <h3>{{ loser.name }} who owed {{ loser.amount | currency }} has to pay the total of {{ total() | currency}}</h3>
+               <h3>{{ loser.name }}, who owed {{ loser.amount | currency }}, must pay the total of {{ total() | currency}}</h3>
             </div>
             <form class="form-horizontal" ng-show="showForm">
                <div class="form-group" ng-repeat="diner in diners">
@@ -81,11 +82,31 @@
             </form>
          </div>
 
-      <div class="footer">
-          <p>created by <a href="http://tedsanders.com/">Ted Sanders</a> and <a href="http://niru.org/">Niru Maheswaranathan</a></p>
-      </div>
 
-		 </div> <!-- /container -->
+         <!-- Experimental Pie Chart -->
+         <div>
+         
+         <p>Click a link to transform the pie chart!</p>
+
+         <ul id="options" class="no-bullets">
+             <li><a href="#restaurant">Restaurant</a> </li>
+             <li><a href="#buffet">Buffet</a> </li>
+             <li><a href="#date">Date</a> </li>
+             <li><a href="#bigBertha">Big Bertha</a> </li>
+         </ul>
+
+         <div id="pie-chart"><div id="arrow"></div></div>
+
+         <p>Click the wheel to spin it! (The more you click, the faster it goes!)</p>
+
+         </div>
+
+
+         <div class="footer">
+             <p>created by <a href="http://tedsanders.com/">Ted Sanders</a> and <a href="http://niru.org/">Niru Maheswaranathan</a></p>
+         </div>
+
+	   </div> <!-- /container -->
    </body>
 
 </html>
