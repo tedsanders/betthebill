@@ -46,7 +46,7 @@
                      <input type="text" class="form-control text-right" ng-model="diner.name" ng-change="updateChart()">
                   </div>
                   <div class="col-xs-5">
-                     <input type="number" class="form-control" ng-model="diner.amount" ng-change="updateChart()">
+                     <input type="number" class="form-control" min="0" smart-float ng-model="diner.amount" ng-change="updateChart()">
                   </div>
                   <div class="col-xs-2">
                      <button ng-click="removeDiner($index)" class="btn btn-danger">
@@ -84,13 +84,6 @@
 
          <!-- Experimental Pie Chart Works -->
 				 <div id="pie">
-						<p>Click a link to transform the pie chart!</p>
-						<ul id="options" class="no-bullets">
-								<li><a href="#restaurant">Restaurant</a> </li>
-								<li><a href="#buffet">Buffet</a> </li>
-								<li><a href="#date">Date</a> </li>
-								<li><a href="#bigBertha">Big Bertha</a> </li>
-						</ul>
 						<div id="pie-chart"><div id="arrow"></div></div>
 				 </div>
 

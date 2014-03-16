@@ -2,14 +2,19 @@ var app = angular.module('bet-the-bill', []);
 
 function DinerCtrl($scope) {
 
+	 // d3 colors
+	 var getcolor = d3.scale.category10()
+
    // Initialize
    $scope.showResult = false;
    $scope.diners = [{
       'name': 'Diner 1',
       'amount': 1,
+			'color': getcolor(0)
    }, {
       'name': 'Diner 2',
       'amount': 1,
+			'color': getcolor(1)
    }];
    $scope.nextDiner = 3;
    $scope.total = 0
@@ -18,7 +23,8 @@ function DinerCtrl($scope) {
    $scope.addDiner = function() {
       $scope.diners.push({
          'name': 'Diner ' + $scope.nextDiner,
-         'amount': 0
+         'amount': 0,
+				 'color': getcolor($scope.nextDiner)
       });
       $scope.nextDiner++;
 			//$scope.redraw()
@@ -96,7 +102,6 @@ function DinerCtrl($scope) {
 				h = 400,
 				r = Math.min(w, h) / 2,        // arc radius
 				dur = 1000,                     // duration, in milliseconds
-				color = d3.scale.category10(),
 				donut = d3.layout.pie().sort(null),
 				arc = d3.svg.arc().innerRadius(0).outerRadius(r - 20);
 
@@ -137,8 +142,6 @@ function DinerCtrl($scope) {
 		// update chart
 		$scope.updateChart = function() {
 
-				console.log('updating!')
-
 				myAmounts = amounts()
 
 				var arcs = arc_grp.selectAll("path")
@@ -146,9 +149,12 @@ function DinerCtrl($scope) {
 				arcs.enter().append("svg:path")
 						.attr("stroke", "white")
 						.attr("stroke-width", 0.5)
-						.attr("fill", function(d, i) {return color(i);})
+						.attr("fill", function(d, i) {return $scope.diners[i].color})
 						.attr("d", arc)
 						.each(function(d) {this._current = d});
+
+				// remove old paths
+				arcs.exit().remove()
 
 				// DRAW SLICE LABELS
 				var sliceLabel = label_group.selectAll("text")
@@ -168,6 +174,8 @@ function DinerCtrl($scope) {
 														if(d.data == 0) { return "font-size: 0;"}
 														else { return "font-size: 32px;"};})
 						.text(function(d, i) {return $scope.diners[i].name; });
+
+				sliceLabel.exit().remove()
 
 				arcs.data(donut(myAmounts)); // recompute angles, rebind data
 				arcs.transition().ease("elastic").duration(dur).attrTween("d", arcTween);
