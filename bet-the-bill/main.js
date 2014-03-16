@@ -21,6 +21,7 @@ function DinerCtrl($scope) {
          'amount': 0
       });
       $scope.nextDiner++;
+			//$scope.redraw()
 			$scope.updateChart()
    }
 
@@ -35,6 +36,7 @@ function DinerCtrl($scope) {
 
 		$scope.removeDiner = function(idx) {
       $scope.diners.splice(idx, 1);
+			//$scope.redraw()
 			$scope.updateChart()
    }
 
@@ -75,18 +77,19 @@ function DinerCtrl($scope) {
       $scope.showResult = false;
    }
 
-   // helper
+   // helpers
    $scope.parseAmt = function(amt) {
       return Math.ceil(parseFloat(amt) * 100) / 100;
    };
 
-		//var amounts = function() {
-				//var temp = []
-				//angular.forEach($scope.diners, function(d) {
-						//temp.push(d.amount);
-				//});
-				//return temp;
-		//}
+		// get array of diner amounts
+		var amounts = function() {
+				var temp = new Array;
+				for(var idx in $scope.diners) {
+						temp.push($scope.diners[idx].amount);
+				}
+				return temp
+		}
 
 	 // Initialize d3 plot
 		var w = 400,                       // width and height, natch
@@ -115,43 +118,9 @@ function DinerCtrl($scope) {
 				//.attr("transform", "translate(" + (w / 2) + "," + (h / 2) + ")");
 				//
 
-		// get array of diner amounts
-		var amounts = function() {
-				var temp = new Array;
-				for(var idx in $scope.diners) {
-						temp.push($scope.diners[idx].amount);
-				}
-				return temp
-		}
-
 		// DRAW ARC PATHS
-		var arcs = arc_grp.selectAll("path")
-				.data(donut(amounts()));
-		arcs.enter().append("svg:path")
-				.attr("stroke", "white")
-				.attr("stroke-width", 0.5)
-				.attr("fill", function(d, i) {return color(i);})
-				.attr("d", arc)
-				.each(function(d) {this._current = d});
-
-		// DRAW SLICE LABELS
-		var sliceLabel = label_group.selectAll("text")
-				.data(donut(amounts()));
-		sliceLabel.enter().append("svg:text")
-				.attr("class", "arcLabel")
-				.attr("x", r-100)
-				.attr("y", 0)
-				.attr("transform", function(d) {
-								var coordinates = arc.centroid(d);
-								var rotationangle = Math.atan(coordinates[1]/coordinates[0])*180/3.1415926;
-								if(coordinates[0] < 0) { rotationangle = rotationangle-180; }
-								return "rotate(" + rotationangle + ")"; })
-				.attr("text-anchor", "middle")
-				.attr("alignment-baseline", "middle")
-				.attr("style", function(d) {
-												if(d.data == 0) { return "font-size: 0;"}
-												else { return "font-size: 32px;"};})
-				.text(function(d, i) {return $scope.diners[i].name; });
+		//$scope.redraw = function() {
+		//}
 
 		// --------- "PAY NO ATTENTION TO THE MAN BEHIND THE CURTAIN" ---------
 
@@ -171,6 +140,34 @@ function DinerCtrl($scope) {
 				console.log('updating!')
 
 				myAmounts = amounts()
+
+				var arcs = arc_grp.selectAll("path")
+						.data(donut(amounts()));
+				arcs.enter().append("svg:path")
+						.attr("stroke", "white")
+						.attr("stroke-width", 0.5)
+						.attr("fill", function(d, i) {return color(i);})
+						.attr("d", arc)
+						.each(function(d) {this._current = d});
+
+				// DRAW SLICE LABELS
+				var sliceLabel = label_group.selectAll("text")
+						.data(donut(amounts()));
+				sliceLabel.enter().append("svg:text")
+						.attr("class", "arcLabel")
+						.attr("x", r-100)
+						.attr("y", 0)
+						.attr("transform", function(d) {
+										var coordinates = arc.centroid(d);
+										var rotationangle = Math.atan(coordinates[1]/coordinates[0])*180/3.1415926;
+										if(coordinates[0] < 0) { rotationangle = rotationangle-180; }
+										return "rotate(" + rotationangle + ")"; })
+						.attr("text-anchor", "middle")
+						.attr("alignment-baseline", "middle")
+						.attr("style", function(d) {
+														if(d.data == 0) { return "font-size: 0;"}
+														else { return "font-size: 32px;"};})
+						.text(function(d, i) {return $scope.diners[i].name; });
 
 				arcs.data(donut(myAmounts)); // recompute angles, rebind data
 				arcs.transition().ease("elastic").duration(dur).attrTween("d", arcTween);
@@ -194,4 +191,6 @@ function DinerCtrl($scope) {
 				//pieLabel.text(data.label);
 		}
 
+		// initialize d3 plot
+		$scope.updateChart()
 }
