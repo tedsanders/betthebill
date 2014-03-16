@@ -98,12 +98,12 @@ function DinerCtrl($scope) {
 		}
 
 	 // Initialize d3 plot
-		var w = 400,                       // width and height, natch
-				h = 400,
-				r = Math.min(w, h) / 2,        // arc radius
-				dur = 1000,                     // duration, in milliseconds
-				donut = d3.layout.pie().sort(null),
-				arc = d3.svg.arc().innerRadius(0).outerRadius(r - 20);
+		var w = 500,                       // width and height, natch
+			h = 500,
+			r = Math.min(w, h) / 2,        // arc radius
+			dur = 1000,                     // duration, in milliseconds
+			donut = d3.layout.pie().sort(null),
+			arc = d3.svg.arc().innerRadius(0).outerRadius(r - 20);
 
 		// ---------------------------------------------------------------------
 		var svg = d3.select("#pie-chart").append("svg:svg")
@@ -116,12 +116,6 @@ function DinerCtrl($scope) {
 		var label_group = svg.append("svg:g")
 				.attr("class", "lblGroup")
 				.attr("transform", "translate(" + (w / 2) + "," + (h / 2) + ")");
-
-		// GROUP FOR CENTER TEXT
-		//var center_group = svg.append("svg:g")
-				//.attr("class", "ctrGroup")
-				//.attr("transform", "translate(" + (w / 2) + "," + (h / 2) + ")");
-				//
 
 		// DRAW ARC PATHS
 		//$scope.redraw = function() {
@@ -192,8 +186,8 @@ function DinerCtrl($scope) {
 				.attr("text-anchor", "middle")
 				.attr("alignment-baseline", "middle")
 				.attr("style", function(d) {
-												if(d.data == 0) { return "font-size: 0;"}
-												else { return "font-size: 32px;"};})
+												if(d.data > 0) { return "font-size: 32px;"}
+												else { return "font-size: 0;"};})
 				.text(function(d, i) {return $scope.diners[i].name; });
 						
 				//pieLabel.text(data.label);
