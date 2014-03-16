@@ -7,8 +7,8 @@ var restaurant = { label: 'Restaurant', pct: [0, 1, 1, 2, 3, 5] },
 
 var labels = ['Diner #1', 'Diner #2', 'Diner #3', 'Diner #4', 'Diner #5', 'Diner #6'];
 
-var w = 600,                       // width and height, natch
-    h = 600,
+var w = 400,                       // width and height, natch
+    h = 400,
     r = Math.min(w, h) / 2,        // arc radius
     dur = 1000,                     // duration, in milliseconds
     color = d3.scale.category10(),
