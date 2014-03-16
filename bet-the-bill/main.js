@@ -3,18 +3,18 @@ var app = angular.module('bet-the-bill', []);
 function DinerCtrl($scope) {
 
 	 // d3 colors
-	 var getcolor = d3.scale.category20()
+	 var getcolor = d3.scale.category10()
 
    // Initialize
    $scope.showResult = false;
    $scope.diners = [{
       'name': 'Diner 1',
       'amount': 1,
-			'color': getcolor(0)
+	  'id': 1
    }, {
       'name': 'Diner 2',
       'amount': 1,
-			'color': getcolor(1)
+	  'id': 2
    }];
    $scope.nextDiner = 3;
    $scope.total = 0
@@ -24,7 +24,7 @@ function DinerCtrl($scope) {
       $scope.diners.push({
          'name': 'Diner ' + $scope.nextDiner,
          'amount': 0,
-				 'color': getcolor($scope.nextDiner)
+		 'id': $scope.nextDiner
       });
       $scope.nextDiner++;
 			//$scope.redraw()
@@ -149,7 +149,7 @@ function DinerCtrl($scope) {
 				arcs.enter().append("svg:path")
 						.attr("stroke", "white")
 						.attr("stroke-width", 0.5)
-						.attr("fill", function(d, i) {return $scope.diners[i].color})
+						.attr("fill", function(d, i) {return getcolor($scope.diners[i]);})
 						.attr("d", arc)
 						.each(function(d) {this._current = d});
 
