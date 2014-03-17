@@ -3,7 +3,8 @@ var app = angular.module('bet-the-bill', []);
 function DinerCtrl($scope) {
 
 	 // d3 colors
-	 var getcolor = d3.scale.category10()
+	 //var getcolor = d3.scale.category10()
+	 var getcolor = ["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd", "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"]
 
    // Initialize
    $scope.showResult = false;
@@ -143,7 +144,7 @@ function DinerCtrl($scope) {
 				arcs.enter().append("svg:path")
 						.attr("stroke", "white")
 						.attr("stroke-width", 0.5)
-						.attr("fill", function(d, i) {return getcolor($scope.diners[i].id);})
+						.attr("fill", function(d, i) {return getcolor[(i-1)%10]})
 						.attr("d", arc)
 						.each(function(d) {this._current = d});
 
@@ -165,8 +166,8 @@ function DinerCtrl($scope) {
 						.attr("text-anchor", "middle")
 						.attr("alignment-baseline", "middle")
 						.attr("style", function(d) {
-														if(d.data == 0) { return "font-size: 0;"}
-														else { return "font-size: 32px;"};})
+														if(d.data > 0) { return "font-size: 32px;"}
+														else { return "font-size: 0;"};})
 						.text(function(d, i) {return $scope.diners[i].name; });
 
 				sliceLabel.exit().remove()
@@ -174,6 +175,8 @@ function DinerCtrl($scope) {
 				arcs.data(donut(myAmounts)); // recompute angles, rebind data
 				arcs.transition().ease("elastic").duration(dur).attrTween("d", arcTween);
 
+
+				//why do we have all this happening twice? I guess this second one has the elastic animation, and the first one declares the variable names.
 				sliceLabel.data(donut(myAmounts));
 				sliceLabel.transition().ease("elastic").duration(dur)
 				.attr("x", r-100)
