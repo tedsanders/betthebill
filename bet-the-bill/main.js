@@ -144,7 +144,7 @@ function DinerCtrl($scope) {
 				arcs.enter().append("svg:path")
 						.attr("stroke", "white")
 						.attr("stroke-width", 0.5)
-						.attr("fill", function(d, i) {return getcolor[i%10]})
+						.attr("fill", function(d, i) {return getcolor[$scope.diners[i].id-1 % 10];})
 						.attr("d", arc)
 						.each(function(d) {this._current = d});
 
@@ -176,7 +176,7 @@ function DinerCtrl($scope) {
 				arcs.transition().ease("elastic").duration(dur).attrTween("d", arcTween);
 
 
-				//why do we have all this happening twice? I guess this second one has the elastic animation, and the first one declares the variable names.
+				//why do we have all this happening twice? I guess this second one has the elastic animation, and the first one declares the variable
 				sliceLabel.data(donut(myAmounts));
 				sliceLabel.transition().ease("elastic").duration(dur)
 				.attr("x", r-100)
