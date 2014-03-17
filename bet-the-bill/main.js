@@ -20,6 +20,7 @@ function DinerCtrl($scope) {
    $scope.nextDiner = 3;
    $scope.total = 0
    $scope.showForm = true;
+   wheelposition = 0; //Initial wheel position for animation
 
    $scope.addDiner = function() {
       $scope.diners.push({
@@ -47,27 +48,48 @@ function DinerCtrl($scope) {
 			$scope.updateChart()
    }
 
+
    $scope.betBill = function() {
 
       // hide the form
       $scope.showForm = false;
 
-      // show the animation
       // compute result
       var total = $scope.total(); // get total
-      var die = Math.random() * total; // roll a die
+      if (0 == total) { alert("What should we do if the total is zero? -Ted, March 2014")};
+      var die = Math.random() * total; // roll a die. By the way, Math.random includes 0 but excludes 1.
       var cumTotal = 0;
       for (var i = 0; i < $scope.diners.length; i++) {
 
          // add this guy to cumulative total
-         cumTotal += Math.ceil(100 * parseFloat($scope.diners[i].amount)) / 100;
+         cumTotal += Math.ceil(100 * parseFloat($scope.diners[i].amount)) / 100; //Why ceil instead of round? Hmm.
 
          // check if this guy has to pay
+         // Note that the 'less than' comparison is essential for maximum fairness, given that Math.random includes 0 but not 1.
          if (die < cumTotal) {
             $scope.setLoser(i);
             break;
          }
       }
+
+      //This section animates the spinning wheel.
+
+      //First, it finds the svg element and calls it wheel. This is the thing that will spin.
+	  var wheel = document.querySelector('svg');
+
+	  //Second, it clears the wheel's the current style information
+      wheel.removeAttribute('style');
+
+      //Third, it computes a new position for the wheel
+      wheelposition = wheelposition + 1080 - 360*die/total;
+      var css = '-webkit-transform: rotate(' + wheelposition + 'deg);'
+            + 'transform: rotate(' + wheelposition + 'deg);';
+
+      //Fourth, it sets the newly computed style so that the wheel spins to the new position
+      wheel.setAttribute(
+        'style', css
+      );
+
    }
 
    $scope.setLoser = function(idx) {
@@ -80,8 +102,7 @@ function DinerCtrl($scope) {
       $scope.showResult = false;
    }
    $scope.startOver = function() {
-      $scope.showForm = true;
-      $scope.showResult = false;
+      window.location.reload() //I changed this to refresh the page. There is likely a better way to do things. Previously, this was a copy of the goBack function. -Ted
    }
 
    // helpers
