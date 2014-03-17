@@ -81,7 +81,7 @@ function DinerCtrl($scope) {
       wheel.removeAttribute('style');
 
       //Third, it computes a new position for the wheel
-      wheelposition = wheelposition + 1080 - 360*die/total;
+      wheelposition = wheelposition - wheelposition%360 + 1440 - 360*die/total; //The -wheelposition%360 is for when people use the Go Back button and spin again. This effectively resets the wheelposition to 0 so that a rotation by 360*die/total lands on the correct section.
       var css = '-webkit-transform: rotate(' + wheelposition + 'deg);'
             + 'transform: rotate(' + wheelposition + 'deg);';
 
@@ -119,25 +119,31 @@ function DinerCtrl($scope) {
 				return temp
 		}
 
+
 	 // Initialize d3 plot
-		var w = 500,                       // width and height, natch
-			h = 500,
-			r = Math.min(w, h) / 2,        // arc radius
+		var width = document.getElementById('pie-chart').offsetWidth,
+			r = width / 2,        // arc radius
 			dur = 1000,                     // duration, in milliseconds
 			donut = d3.layout.pie().sort(null),
 			arc = d3.svg.arc().innerRadius(0).outerRadius(r - 20);
 
 		// ---------------------------------------------------------------------
 		var svg = d3.select("#pie-chart").append("svg:svg")
-				.attr("width", w).attr("height", h);
+				.attr("width", width)
+				.attr("height", width)
+				//.attr('viewBox','0 0 '+width+' '+width)
+    			//.attr('preserveAspectRatio','xMinYMin');
 
 		var arc_grp = svg.append("svg:g")
 				.attr("class", "arcGrp")
-				.attr("transform", "translate(" + (w / 2) + "," + (h / 2) + ")");
+				.attr("transform", "translate(" + (width / 2) + "," + (width / 2) + ")");
 
 		var label_group = svg.append("svg:g")
 				.attr("class", "lblGroup")
-				.attr("transform", "translate(" + (w / 2) + "," + (h / 2) + ")");
+				.attr("transform", "translate(" + (width / 2) + "," + (width / 2) + ")");
+		
+		// By the way, here is StackOverflow on how to make d3 responsive: http://stackoverflow.com/questions/17626555/responsive-d3-chart
+
 
 		// DRAW ARC PATHS
 		//$scope.redraw = function() {
@@ -155,6 +161,8 @@ function DinerCtrl($scope) {
 				};
 		}
 
+
+
 		// update chart
 		$scope.updateChart = function() {
 
@@ -168,8 +176,6 @@ function DinerCtrl($scope) {
 						.attr("fill", function(d, i) {return getcolor[$scope.diners[i].id-1 % 10];})
 						.attr("d", arc)
 						.each(function(d) {this._current = d});
-
-					console.log(arcs);
 
 				// remove old paths
 				arcs.exit().remove()

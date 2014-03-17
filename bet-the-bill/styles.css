@@ -89,6 +89,14 @@ input.ng-valid.ng-dirty {
 
 #carbonads-container {display:none} h1[id] {padding-top:0px; margin-top:20px} .bs-old-docs {display:none} .bs-social {display:none} .col-md-3 {display:none !important} .col-md-9 {width:100% !important} .navbar-fixed-top {position:absolute !important}
 
+#bet-the-bill-button {
+  width:100%;
+}
+
+#add-diner-button {
+  width:100%;
+}
+
 /******************
 ** PIE CHART CSS **
 ******************/
@@ -106,14 +114,16 @@ input.ng-valid.ng-dirty {
 
 #arrow {
     position:absolute;
-    top: 268px;
-    left: 568px;
+    top: 0;
+    left: 50%;
+    -webkit-transform: translateX(-32px);
+    transform: translateX(-32px);
     z-index:2;
 
 
     width: 0; 
     height: 0; 
-    border-top: 32px solid transparent;
-    border-bottom: 32px solid transparent;    
-    border-right:32px solid black; 
+    border-left: 32px solid transparent;
+    border-right: 32px solid transparent;    
+    border-top:32px solid black;
 }
