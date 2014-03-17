@@ -148,6 +148,8 @@ function DinerCtrl($scope) {
 						.attr("d", arc)
 						.each(function(d) {this._current = d});
 
+					console.log(arcs);
+
 				// remove old paths
 				arcs.exit().remove()
 
@@ -173,6 +175,7 @@ function DinerCtrl($scope) {
 				sliceLabel.exit().remove()
 
 				arcs.data(donut(myAmounts)); // recompute angles, rebind data
+				arcs.attr("fill", function(d, i) {return getcolor[$scope.diners[i].id-1 % 10];});
 				arcs.transition().ease("elastic").duration(dur).attrTween("d", arcTween);
 
 
