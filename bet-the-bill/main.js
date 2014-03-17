@@ -144,7 +144,7 @@ function DinerCtrl($scope) {
 				arcs.enter().append("svg:path")
 						.attr("stroke", "white")
 						.attr("stroke-width", 0.5)
-						.attr("fill", function(d, i) {return getcolor[(i-1)%10]})
+						.attr("fill", function(d, i) {return getcolor[i%10]})
 						.attr("d", arc)
 						.each(function(d) {this._current = d});
 
