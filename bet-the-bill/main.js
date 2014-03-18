@@ -14,7 +14,7 @@ function DinerCtrl($scope) {
 	  'id': 1
    }, {
       'name': 'Diner 2',
-      'amount': 1,
+      'amount': 2,
 	  'id': 2
    }];
    $scope.nextDiner = 3;
