@@ -125,7 +125,7 @@ function DinerCtrl($scope) {
 			r = width / 2,        // arc radius
 			dur = 1000,                     // duration, in milliseconds
 			donut = d3.layout.pie().sort(null),
-			arc = d3.svg.arc().innerRadius(0).outerRadius(r - 20);
+			arc = d3.svg.arc().innerRadius(0).outerRadius(r - width/20);
 
 		// ---------------------------------------------------------------------
 		var svg = d3.select("#pie-chart").append("svg:svg")
@@ -173,7 +173,7 @@ function DinerCtrl($scope) {
 				arcs.enter().append("svg:path")
 						.attr("stroke", "white")
 						.attr("stroke-width", 0.5)
-						.attr("fill", function(d, i) {return getcolor[$scope.diners[i].id-1 % 10];})
+						.attr("fill", function(d, i) {return getcolor[($scope.diners[i].id-1) % 10];})
 						.attr("d", arc)
 						.each(function(d) {this._current = d});
 
@@ -181,11 +181,12 @@ function DinerCtrl($scope) {
 				arcs.exit().remove()
 
 				// DRAW SLICE LABELS
+				// A bunch of numbers are hardcoded in below. FYI.
 				var sliceLabel = label_group.selectAll("text")
 						.data(donut(amounts()));
 				sliceLabel.enter().append("svg:text")
 						.attr("class", "arcLabel")
-						.attr("x", r-100)
+						.attr("x", r-width/4)
 						.attr("y", 0)
 						.attr("transform", function(d) {
 										var coordinates = arc.centroid(d);
@@ -194,34 +195,35 @@ function DinerCtrl($scope) {
 										return "rotate(" + rotationangle + ")"; })
 						.attr("text-anchor", "middle")
 						.attr("alignment-baseline", "middle")
+						.text(function(d, i) {return $scope.diners[i].name; })
 						.attr("style", function(d) {
-														if(d.data > 0) { return "font-size: 32px;"}
-														else { return "font-size: 0;"};})
-						.text(function(d, i) {return $scope.diners[i].name; });
+														if(d.data > 0 ) { return "font-size: " + width/12 + "px;"}
+														else { return "font-size: 0;"};});
+
 
 				sliceLabel.exit().remove()
 
 				arcs.data(donut(myAmounts)); // recompute angles, rebind data
-				arcs.attr("fill", function(d, i) {return getcolor[$scope.diners[i].id-1 % 10];});
+				arcs.attr("fill", function(d, i) {return getcolor[($scope.diners[i].id-1) % 10];});
 				arcs.transition().ease("elastic").duration(dur).attrTween("d", arcTween);
 
 
-				//why do we have all this happening twice? I guess this second one has the elastic animation, and the first one declares the variable
+				//why do we have all this happening twice? I guess this second one has the elastic animation, and the first one declares the variable. --Update: I tried removing the first pass through and the Diner labels animated into position. I think we need both halves - the first half to make the labels appear and the second half to make them move. Also, fun fact: changing the first half easily lets us animate the labels as they enter.
 				sliceLabel.data(donut(myAmounts));
 				sliceLabel.transition().ease("elastic").duration(dur)
-				.attr("x", r-100)
+				.attr("x", r-width/4)
 				.attr("y", 0)
 				.attr("transform", function(d) {
-								var coordinates = arc.centroid(d);
+								var coordinates = arc.centroid(d)
 								var rotationangle = Math.atan(coordinates[1]/coordinates[0])*180/3.1415926;
 								if(coordinates[0] < 0) { rotationangle = rotationangle-180; }
 								return "rotate(" + rotationangle + ")"; })
 				.attr("text-anchor", "middle")
 				.attr("alignment-baseline", "middle")
+				.text(function(d, i) {return $scope.diners[i].name; })
 				.attr("style", function(d) {
-												if(d.data > 0) { return "font-size: 32px;"}
-												else { return "font-size: 0;"};})
-				.text(function(d, i) {return $scope.diners[i].name; });
+												if(d.data > 0 ) { return "font-size: " + width/12 + "px;"}
+												else { return "font-size: 0;"};});
 						
 				//pieLabel.text(data.label);
 		}
