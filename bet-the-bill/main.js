@@ -231,8 +231,10 @@ function DinerCtrl($scope) {
 		// initialize d3 plot
 		$scope.updateChart()
 
-		// redraw chart on resize - did this break things?
-		/*window.addEventListener('resize', function(event){
-    		$scope.updateChart();
-		}*/
+
 }
+
+		// redraw chart on resize - did this break things?
+		window.addEventListener('resize', function(event){
+    		$scope.updateChart();
+		}
