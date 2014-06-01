@@ -94,6 +94,8 @@ function DinerCtrl($scope) {
         'style', css
       );
 
+      $scope.disableBackButton = false;
+
    }
 
    $scope.setLoser = function(idx) {
