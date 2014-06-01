@@ -20,6 +20,7 @@ function DinerCtrl($scope) {
    $scope.nextDiner = 3;
    $scope.total = 0
    $scope.showForm = true;
+   $scope.disableBackButton = true;
    wheelposition = 0; //Initial wheel position for animation
 
    $scope.addDiner = function() {
@@ -53,6 +54,9 @@ function DinerCtrl($scope) {
 
       // hide the form
       $scope.showForm = false;
+
+      // disable back button
+      $scope.disableBackButton = true;!
 
       // compute result
       var total = $scope.total(); // get total

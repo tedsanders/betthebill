@@ -73,7 +73,7 @@
             <form class="form-horizontal" ng-hide="showForm">
                <div class="form-group">
                   <div class="col-xs-10">
-                     <button ng-click="goBack()" class="btn btn-default" type="button" id="go-back-button">Go Back</button>
+                     <button ng-click="goBack()" ng-disabled="disableBackButton" class="btn btn-default" type="button" id="go-back-button">Go Back</button>
                   </div>
                   <!--"col-sm-4 col-lg-2" <div class="col-sm-4 col-lg-2">
                      <button ng-click="startOver()" class="btn btn-danger" type="button">Start Over</button>
