@@ -89,7 +89,7 @@ input.ng-valid.ng-dirty {
 
 #carbonads-container {display:none} h1[id] {padding-top:0px; margin-top:20px} .bs-old-docs {display:none} .bs-social {display:none} .col-md-3 {display:none !important} .col-md-9 {width:100% !important} .navbar-fixed-top {position:absolute !important}
 
-#bet-the-bill-button {
+#bet-the-bill-button, #go-back-button {
   width:100%;
 }
 
