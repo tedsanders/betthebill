@@ -56,7 +56,7 @@ function DinerCtrl($scope) {
       $scope.showForm = false;
 
       // disable back button
-      $scope.disableBackButton = true;!
+      $scope.disableBackButton = true;
 
       // compute result
       var total = $scope.total(); // get total
