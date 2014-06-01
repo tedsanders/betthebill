@@ -235,6 +235,6 @@ function DinerCtrl($scope) {
 }
 
 		// redraw chart on resize - did this break things?
-		window.addEventListener('resize', function(event){
+		/*window.addEventListener('resize', function(event){
     		$scope.updateChart();
-		}
+		}*/
