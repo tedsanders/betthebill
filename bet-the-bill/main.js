@@ -208,7 +208,7 @@ function DinerCtrl($scope) {
 				arcs.transition().ease("elastic").duration(dur).attrTween("d", arcTween);
 
 
-				//why do we have all this happening twice? I guess this second one has the elastic animation, and the first one declares the variable. --Update: I tried removing the first pass through and the Diner labels animated into position. I think we need both halves - the first half to make the labels appear and the second half to make them move. Also, fun fact: changing the first half easily lets us animate the labels as they enter.
+				//why do we have all this happening twice? I guess this second one has the elastic animation, and the first one declares the variable. --Update: I tried removing the first pass through and the Diner labels animated into position. I think we need both halves - the first half to make the labels appear and the second half to make them move. Also, fun fact: changing the first half will let us easily animate the labels as they enter.
 				sliceLabel.data(donut(myAmounts));
 				sliceLabel.transition().ease("elastic").duration(dur)
 				.attr("x", r-width/4)
@@ -230,4 +230,9 @@ function DinerCtrl($scope) {
 
 		// initialize d3 plot
 		$scope.updateChart()
+
+		// redraw chart on resize
+		window.addEventListener('resize', function(event){
+    		$scope.updateChart();
+		}
 }
