@@ -21,6 +21,7 @@ function DinerCtrl($scope) {
    $scope.total = 0
    $scope.showForm = true;
    $scope.disableBackButton = true;
+   $scope.disableRemoveDiner = false;
    wheelposition = 0; //Initial wheel position for animation
 
    $scope.addDiner = function() {
@@ -32,6 +33,8 @@ function DinerCtrl($scope) {
       $scope.nextDiner++;
 			//$scope.redraw()
 			$scope.updateChart()
+
+	  if(1 < $scope.diners.length) $scope.disableRemoveDiner = false;
    }
 
    // compute the total amount
@@ -43,8 +46,13 @@ function DinerCtrl($scope) {
       return Math.ceil(parseFloat(t) * 100) / 100
    }
 
-		$scope.removeDiner = function(idx) {
-      $scope.diners.splice(idx, 1);
+	$scope.removeDiner = function(idx) {
+
+		//If there are two diners left, disable the remove diner button so we can't go down to zero diners. Also, disabling the button should come before the removal to avoid race conditions, I think
+		if(2 == $scope.diners.length) $scope.disableRemoveDiner = true;
+
+		//Remove the diner and update the chart
+     	$scope.diners.splice(idx, 1);
 			//$scope.redraw()
 			$scope.updateChart()
    }
@@ -55,12 +63,12 @@ function DinerCtrl($scope) {
       // hide the form
       $scope.showForm = false;
 
-      // disable back button
+      // disable back button for duration of spin - WARNING: THIS DOESN'T WORK!
       $scope.disableBackButton = true;
 
       // compute result
       var total = $scope.total(); // get total
-      if (0 == total) { alert("What should we do if the total is zero? -Ted, March 2014")};
+      if (0 == total) { alert("Everybody pays and nobody pays - your total is $0!")};
       var die = Math.random() * total; // roll a die. By the way, Math.random includes 0 but excludes 1.
       var cumTotal = 0;
       for (var i = 0; i < $scope.diners.length; i++) {
