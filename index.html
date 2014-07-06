@@ -40,6 +40,9 @@
             <div class="result" ng-show="showResult">
                <h3>{{ loser.name }}, who owed {{ loser.amount | currency }}, must pay the total of {{ total() | currency}}</h3>
             </div>
+            <div class="result" ng-show="showNullResult">
+               <h3>Everybody wins and nobody wins, becuase the total was zero. Hurray?</h3>
+            </div>
             <form class="form-horizontal" ng-show="showForm">
                <div class="form-group" ng-repeat="diner in diners">
                   <div class="col-xs-5">

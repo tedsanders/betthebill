@@ -49,6 +49,7 @@ function DinerCtrl($scope) {
 	$scope.removeDiner = function(idx) {
 
 		//If there are two diners left, disable the remove diner button so we can't go down to zero diners. Also, disabling the button should come before the removal to avoid race conditions, I think
+		//Also, I'm fine with have users playing BetTheBill solitaire. There's no reason to do it, but no real reason to forbid it either. "That government is best which governs least."
 		if(2 == $scope.diners.length) $scope.disableRemoveDiner = true;
 
 		//Remove the diner and update the chart
@@ -68,39 +69,46 @@ function DinerCtrl($scope) {
 
       // compute result
       var total = $scope.total(); // get total
-      if (0 == total) { alert("Everybody pays and nobody pays - your total is $0!")};
-      var die = Math.random() * total; // roll a die. By the way, Math.random includes 0 but excludes 1.
-      var cumTotal = 0;
-      for (var i = 0; i < $scope.diners.length; i++) {
 
-         // add this guy to cumulative total
-         cumTotal += Math.ceil(100 * parseFloat($scope.diners[i].amount)) / 100; //Why ceil instead of round? Hmm.
+      // only bother computing a loser if the total exists. Also avoids divide-by-zero error in the pie chart drawing function.
+      if(0 != total) {
 
-         // check if this guy has to pay
-         // Note that the 'less than' comparison is essential for maximum fairness, given that Math.random includes 0 but not 1.
-         if (die < cumTotal) {
-            $scope.setLoser(i);
-            break;
-         }
+	      var die = Math.random() * total; // roll a die. By the way, Math.random includes 0 but excludes 1.
+	      var cumTotal = 0;
+	      for (var i = 0; i < $scope.diners.length; i++) {
+
+	         // add this guy to cumulative total
+	         cumTotal += Math.ceil(100 * parseFloat($scope.diners[i].amount)) / 100; //Why ceil instead of round? Hmm.
+
+	         // check if this guy has to pay
+	         // Note that the 'less than' comparison is essential for maximum fairness, given that Math.random includes 0 but not 1.
+	         if (die < cumTotal) {
+	            $scope.setLoser(i);
+	            break;
+	         }
+	      }
+
+	      //This section animates the spinning wheel. P.S. If the total is 0, there will be a divide by zero error.
+
+	      //First, it finds the svg element and calls it wheel. This is the thing that will spin.
+		  var wheel = document.querySelector('svg');
+
+		  //Second, it clears the wheel's the current style information
+	      wheel.removeAttribute('style');
+
+	      //Third, it computes a new position for the wheel
+	      wheelposition = wheelposition - wheelposition%360 + 1440 - 360*die/total; //The -wheelposition%360 is for when people use the Go Back button and spin again. This effectively resets the wheelposition to 0 so that a rotation by 360*die/total lands on the correct section.
+	      var css = '-webkit-transform: rotate(' + wheelposition + 'deg);'
+	            + 'transform: rotate(' + wheelposition + 'deg);';
+
+	      //Fourth, it sets the newly computed style so that the wheel spins to the new position
+	      wheel.setAttribute(
+	        'style', css
+	      );
       }
 
-      //This section animates the spinning wheel.
-
-      //First, it finds the svg element and calls it wheel. This is the thing that will spin.
-	  var wheel = document.querySelector('svg');
-
-	  //Second, it clears the wheel's the current style information
-      wheel.removeAttribute('style');
-
-      //Third, it computes a new position for the wheel
-      wheelposition = wheelposition - wheelposition%360 + 1440 - 360*die/total; //The -wheelposition%360 is for when people use the Go Back button and spin again. This effectively resets the wheelposition to 0 so that a rotation by 360*die/total lands on the correct section.
-      var css = '-webkit-transform: rotate(' + wheelposition + 'deg);'
-            + 'transform: rotate(' + wheelposition + 'deg);';
-
-      //Fourth, it sets the newly computed style so that the wheel spins to the new position
-      wheel.setAttribute(
-        'style', css
-      );
+      //otherwise, if the total is 0, 
+      if(0 == total) $scope.showNullResult = true;
 
       $scope.disableBackButton = false;
 
@@ -114,6 +122,7 @@ function DinerCtrl($scope) {
    $scope.goBack = function() {
       $scope.showForm = true;
       $scope.showResult = false;
+      $scope.showNullResult = false;
    }
    $scope.startOver = function() {
       window.location.reload() //I changed this to refresh the page. There is likely a better way to do things. Previously, this was a copy of the goBack function. -Ted
