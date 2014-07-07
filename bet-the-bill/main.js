@@ -34,6 +34,7 @@ function DinerCtrl($scope) {
 			//$scope.redraw()
 			$scope.updateChart()
 
+
 	  if(1 < $scope.diners.length) $scope.disableRemoveDiner = false;
    }
 
@@ -107,7 +108,7 @@ function DinerCtrl($scope) {
 	      );
       }
 
-      //otherwise, if the total is 0, 
+      //otherwise, if the total is 0: 
       if(0 == total) $scope.showNullResult = true;
 
       $scope.disableBackButton = false;
@@ -189,6 +190,7 @@ function DinerCtrl($scope) {
 		// update chart
 		$scope.updateChart = function() {
 
+			if(0 != $scope.diners.length) {
 				myAmounts = amounts()
 
 				var arcs = arc_grp.selectAll("path")
@@ -196,7 +198,7 @@ function DinerCtrl($scope) {
 				arcs.enter().append("svg:path")
 						.attr("stroke", "white")
 						.attr("stroke-width", 0.5)
-						.attr("fill", function(d, i) {return getcolor[($scope.diners[i].id-1) % 10];})
+						.attr("fill", function(d, i) {return getcolor[($scope.diners[i].id-1) % getcolor.length];})
 						.attr("d", arc)
 						.each(function(d) {this._current = d});
 
@@ -204,7 +206,7 @@ function DinerCtrl($scope) {
 				arcs.exit().remove()
 
 				// DRAW SLICE LABELS
-				// A bunch of numbers are hardcoded in below. FYI.
+				// Warning: some numbers are hardcoded in below. FYI.
 				var sliceLabel = label_group.selectAll("text")
 						.data(donut(amounts()));
 				sliceLabel.enter().append("svg:text")
@@ -227,7 +229,7 @@ function DinerCtrl($scope) {
 				sliceLabel.exit().remove()
 
 				arcs.data(donut(myAmounts)); // recompute angles, rebind data
-				arcs.attr("fill", function(d, i) {return getcolor[($scope.diners[i].id-1) % 10];});
+				arcs.attr("fill", function(d, i) {return getcolor[($scope.diners[i].id-1) % getcolor.length];});
 				arcs.transition().ease("elastic").duration(dur).attrTween("d", arcTween);
 
 
@@ -249,6 +251,7 @@ function DinerCtrl($scope) {
 												else { return "font-size: 0;"};});
 						
 				//pieLabel.text(data.label);
+			}
 		}
 
 		// initialize d3 plot

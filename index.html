@@ -38,7 +38,7 @@
          <div class="row marketing animate-create" ng-controller="DinerCtrl">
 
             <div class="result" ng-show="showResult">
-               <h3>{{ loser.name }}, who owed {{ loser.amount | currency }}, must pay the total of {{ total() | currency}}</h3>
+               <h3>{{ loser.name }} (who owed {{ loser.amount | currency }}) must pay the total of {{ total() | currency}}</h3>
             </div>
             <div class="result" ng-show="showNullResult">
                <h3>Everybody wins and nobody wins, becuase the total was zero. Hurray?</h3>
