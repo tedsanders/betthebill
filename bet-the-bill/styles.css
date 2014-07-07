@@ -1,9 +1,12 @@
 /* Space out content a bit */
+html, body {
+  max-width:100%; /*prevents rotating svg from increasing view size hopefully*/
+  overflow-x:hidden; /*ditto, I think*/
+}
+
 body {
   padding-top: 20px;
   padding-bottom: 20px;
-  max-width:100%; /*prevents rotating svg from increasing view size hopefully*/
-  overflow-x:hidden; /*ditto, I think*/
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -106,8 +109,8 @@ input.ng-valid.ng-dirty {
 #pie-chart>svg {
     pointer-events:none; /*so that buttons are not covered*/
     z-index:-1; /*attempt to not cover buttons that failed. probably unnecessary now.*/
-    margin:-600;
-    background:#AAA;
+    margin:-600; /*another failed attempt*/
+    background:#AAA; /*making bug visible for people to help me*/
 
     -webkit-transition: all 2718ms cubic-bezier(0.250, 0.460, 0.450, 0.940); 
        -moz-transition: all 2718ms cubic-bezier(0.250, 0.460, 0.450, 0.940); 

@@ -106,6 +106,10 @@ function DinerCtrl($scope) {
 	      wheel.setAttribute(
 	        'style', css
 	      );
+      
+
+
+
       }
 
       //otherwise, if the total is 0: 
