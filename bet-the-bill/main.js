@@ -269,8 +269,10 @@ function DinerCtrl($scope) {
     		$scope.updateChart();
 		}*/
 
-		var offset = window.pageXOffset;
+
+		//Disable horizontal scroll
+		/*var offset = window.pageXOffset;
    		$(window).scroll(function () {
         	if(offset != window.pageXOffset)
             	window.scrollTo(0, window.pageYOffset);
-    	});
+    	});*/

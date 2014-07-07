@@ -1,12 +1,7 @@
-/* Space out content a bit */
-html, body {
-  max-width:100%; /*prevents rotating svg from increasing view size hopefully*/
-  overflow-x:hidden; /*ditto, I think*/
-}
-
 body {
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 20px; /* Space out content a bit */
+  padding-bottom: 20px; /* Space out content a bit */
+  overflow-x:hidden;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
