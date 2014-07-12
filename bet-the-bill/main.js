@@ -92,7 +92,7 @@ function DinerCtrl($scope) {
 	      //This section animates the spinning wheel. P.S. If the total is 0, there will be a divide by zero error.
 
 	      //First, it finds the svg element and calls it wheel. This is the thing that will spin.
-		  var wheel = document.querySelector('#pie-chart');
+		  var wheel = document.querySelector('svg');
 
 		  //Second, it clears the wheel's the current style information
 	      wheel.removeAttribute('style');
