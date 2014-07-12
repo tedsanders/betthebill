@@ -158,8 +158,10 @@ function DinerCtrl($scope) {
 
 		// ---------------------------------------------------------------------
 		var svg = d3.select("#pie-chart").append("svg:svg")
-				.attr('viewBox','0 0 '+width+' '+width)
-    		.attr('preserveAspectRatio','xMinYMin');		// By the way, here is StackOverflow on how to make d3 responsive: http://stackoverflow.com/questions/17626555/responsive-d3-chart
+				.attr("width", width)
+				.attr("height", width)
+				//.attr('viewBox','0 0 '+width+' '+width)			// <--- This should work, but still doesn't
+    		//.attr('preserveAspectRatio','xMinYMin');		// By the way, here is StackOverflow on how to make d3 responsive: http://stackoverflow.com/questions/17626555/responsive-d3-chart
 
 		var arc_grp = svg.append("svg:g")
 				.attr("class", "arcGrp")
@@ -196,12 +198,10 @@ function DinerCtrl($scope) {
 
 				//Check if total is zero
 				if(0 == $scope.total()) {
-					alert("hi");
 					for( var i = 0; i < myAmounts.length; i++ ) {
 						myAmounts[i] = 1;
 					}
 				}
-				//*/
 
 				var arcs = arc_grp.selectAll("path")
 						.data(donut(amounts()));
