@@ -104,9 +104,9 @@ input.ng-valid.ng-dirty {
 #pie-chart>svg {
     pointer-events:none; /*so that buttons are not covered*/
 
-    -webkit-transition: all 2718ms cubic-bezier(0.250, 0.460, 0.450, 0.940); 
-       -moz-transition: all 2718ms cubic-bezier(0.250, 0.460, 0.450, 0.940); 
-         -o-transition: all 2718ms cubic-bezier(0.250, 0.460, 0.450, 0.940); 
+    -webkit-transition: all 2718ms cubic-bezier(0.250, 0.460, 0.450, 0.940);
+       -moz-transition: all 2718ms cubic-bezier(0.250, 0.460, 0.450, 0.940);
+         -o-transition: all 2718ms cubic-bezier(0.250, 0.460, 0.450, 0.940);
             transition: all 2718ms cubic-bezier(0.250, 0.460, 0.450, 0.940); /* constant friction approximation */
   }
 
@@ -123,9 +123,9 @@ input.ng-valid.ng-dirty {
     z-index:2;
 
 
-    width: 0; 
-    height: 0; 
+    width: 0;
+    height: 0;
     border-left: 32px solid transparent;
-    border-right: 32px solid transparent;    
+    border-right: 32px solid transparent;
     border-top:32px solid black;
 }

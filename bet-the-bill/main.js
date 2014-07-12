@@ -18,7 +18,7 @@ function DinerCtrl($scope) {
 	  'id': 2
    }];
    $scope.nextDiner = 3;
-   $scope.total = 0
+   $scope.total = 0;
    $scope.showForm = true;
    $scope.disableBackButton = true;
    $scope.disableRemoveDiner = false;
@@ -92,7 +92,7 @@ function DinerCtrl($scope) {
 	      //This section animates the spinning wheel. P.S. If the total is 0, there will be a divide by zero error.
 
 	      //First, it finds the svg element and calls it wheel. This is the thing that will spin.
-		  var wheel = document.querySelector('svg');
+		  var wheel = document.querySelector('#pie-chart');
 
 		  //Second, it clears the wheel's the current style information
 	      wheel.removeAttribute('style');
@@ -106,13 +106,13 @@ function DinerCtrl($scope) {
 	      wheel.setAttribute(
 	        'style', css
 	      );
-      
+
 
 
 
       }
 
-      //otherwise, if the total is 0: 
+      //otherwise, if the total is 0:
       if(0 == total) $scope.showNullResult = true;
 
       $scope.disableBackButton = false;
@@ -141,6 +141,7 @@ function DinerCtrl($scope) {
 		// get array of diner amounts
 		var amounts = function() {
 				var temp = new Array;
+
 				for(var idx in $scope.diners) {
 						temp.push($scope.diners[idx].amount);
 				}
@@ -157,10 +158,8 @@ function DinerCtrl($scope) {
 
 		// ---------------------------------------------------------------------
 		var svg = d3.select("#pie-chart").append("svg:svg")
-				.attr("width", width)
-				.attr("height", width)
-				//.attr('viewBox','0 0 '+width+' '+width)
-    			//.attr('preserveAspectRatio','xMinYMin');
+				.attr('viewBox','0 0 '+width+' '+width)
+    		.attr('preserveAspectRatio','xMinYMin');		// By the way, here is StackOverflow on how to make d3 responsive: http://stackoverflow.com/questions/17626555/responsive-d3-chart
 
 		var arc_grp = svg.append("svg:g")
 				.attr("class", "arcGrp")
@@ -169,8 +168,6 @@ function DinerCtrl($scope) {
 		var label_group = svg.append("svg:g")
 				.attr("class", "lblGroup")
 				.attr("transform", "translate(" + (width / 2) + "," + (width / 2) + ")");
-		
-		// By the way, here is StackOverflow on how to make d3 responsive: http://stackoverflow.com/questions/17626555/responsive-d3-chart
 
 
 		// DRAW ARC PATHS
@@ -195,7 +192,16 @@ function DinerCtrl($scope) {
 		$scope.updateChart = function() {
 
 			if(0 != $scope.diners.length) {
-				myAmounts = amounts()
+				myAmounts = amounts();
+
+				//Check if total is zero
+				if(0 == $scope.total()) {
+					alert("hi");
+					for( var i = 0; i < myAmounts.length; i++ ) {
+						myAmounts[i] = 1;
+					}
+				}
+				//*/
 
 				var arcs = arc_grp.selectAll("path")
 						.data(donut(amounts()));
@@ -253,7 +259,7 @@ function DinerCtrl($scope) {
 				.attr("style", function(d) {
 												if(d.data > 0 ) { return "font-size: " + width/12 + "px;"}
 												else { return "font-size: 0;"};});
-						
+
 				//pieLabel.text(data.label);
 			}
 		}
