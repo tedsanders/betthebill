@@ -150,33 +150,21 @@ function DinerCtrl($scope) {
 
 
 	 // Initialize d3 plot
-		var width = document.getElementById('pie-chart').offsetWidth,
-			r = width / 2,        // arc radius
-			dur = 1000,                     // duration, in milliseconds
+	var width = document.getElementById('pie-chart').offsetWidth,
+			r = width/2,
+			dur = 1000,           // duration, in milliseconds
 			donut = d3.layout.pie().sort(null),
 			arc = d3.svg.arc().innerRadius(0).outerRadius(r - width/20);
 
 		// ---------------------------------------------------------------------
 		var svg = d3.select("#pie-chart").append("svg:svg")
-				.attr("width", width)
-				.attr("height", width)
+				//.attr("width", width)
+				//.attr("height", width)
 				//.attr('viewBox','0 0 '+width+' '+width)			// <--- This should work, but still doesn't
     		//.attr('preserveAspectRatio','xMinYMin');		// By the way, here is StackOverflow on how to make d3 responsive: http://stackoverflow.com/questions/17626555/responsive-d3-chart
+		var arc_grp = svg.append("svg:g").attr("class", "arcGrp")
+		var label_group = svg.append("svg:g").attr("class", "lblGroup")
 
-		var arc_grp = svg.append("svg:g")
-				.attr("class", "arcGrp")
-				.attr("transform", "translate(" + (width / 2) + "," + (width / 2) + ")");
-
-		var label_group = svg.append("svg:g")
-				.attr("class", "lblGroup")
-				.attr("transform", "translate(" + (width / 2) + "," + (width / 2) + ")");
-
-
-		// DRAW ARC PATHS
-		//$scope.redraw = function() {
-		//}
-
-		// --------- "PAY NO ATTENTION TO THE MAN BEHIND THE CURTAIN" ---------
 
 		// Store the currently-displayed angles in this._current.
 		// Then, interpolate from this._current to the new angles.
@@ -192,6 +180,18 @@ function DinerCtrl($scope) {
 
 		// update chart
 		$scope.updateChart = function() {
+			///////////////////////////////////////////////////
+			width = document.getElementById('pie-chart').offsetWidth
+			r = width/2
+			arc = d3.svg.arc().innerRadius(0).outerRadius(r - width/20);
+			svg.attr("width", width).attr("height", width)
+			arc_grp.attr("transform", "translate(" + (width / 2) + "," + (width / 2) + ")");
+			label_group.attr("transform", "translate(" + (width / 2) + "," + (width / 2) + ")");
+
+
+
+
+			///////////////////////////////////////////////////
 
 			if(0 != $scope.diners.length) {
 				myAmounts = amounts();
@@ -267,14 +267,11 @@ function DinerCtrl($scope) {
 		// initialize d3 plot
 		$scope.updateChart()
 
+	window.onresize = function(event) {
+		$scope.updateChart();
+	}
 
 }
-
-		// redraw chart on resize - did this break things?
-		/*window.addEventListener('resize', function(event){
-    		$scope.updateChart();
-		}*/
-
 
 		//Disable horizontal scroll
 		var offset = window.pageXOffset;
