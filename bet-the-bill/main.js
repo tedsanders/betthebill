@@ -272,10 +272,11 @@ function DinerCtrl($scope) {
 	}
 
 }
-
+/*
 		//Disable horizontal scroll
 		var offset = window.pageXOffset;
    		$(window).scroll(function () {
         	if(offset != window.pageXOffset)
             	window.scrollTo(0, window.pageYOffset);
     	});
+*/
