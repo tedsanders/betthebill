@@ -20,7 +20,7 @@ function DinerCtrl($scope) {
    $scope.nextDiner = 3;
    $scope.total = 0;
    $scope.showForm = true;
-   $scope.disableBackButton = true;
+   //$scope.disableBackButton = true;
    $scope.disableRemoveDiner = false;
    wheelposition = 0; //Initial wheel position for animation
 
