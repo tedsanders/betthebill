@@ -196,7 +196,7 @@ function DinerCtrl($scope) {
 					}
 
 				var arcs = arc_grp.selectAll("path")
-						.data(donut(amounts()));
+						.data(donut(myAmounts));
 				arcs.enter().append("svg:path")
 						.attr("stroke", "white")
 						.attr("stroke-width", 0.5)
@@ -210,7 +210,7 @@ function DinerCtrl($scope) {
 				// DRAW SLICE LABELS
 				// Warning: some numbers are hardcoded in below. FYI.
 				var sliceLabel = label_group.selectAll("text")
-						.data(donut(amounts()));
+						.data(donut(myAmounts));
 				sliceLabel.enter().append("svg:text")
 						.attr("class", "arcLabel")
 						.attr("x", r-width/4)
@@ -230,13 +230,13 @@ function DinerCtrl($scope) {
 
 				sliceLabel.exit().remove()
 
-				arcs.data(donut(amounts())); // recompute angles, rebind data
+				arcs.data(donut(myAmounts)); // recompute angles, rebind data
 				arcs.attr("fill", function(d, i) {return getcolor[($scope.diners[i].id-1) % getcolor.length];});
 				arcs.transition().ease("elastic").duration(dur).attrTween("d", arcTween);
 
 
 				//why do we have all this happening twice? I guess this second one has the elastic animation, and the first one declares the variable. --Update: I tried removing the first pass through and the Diner labels animated into position. I think we need both halves - the first half to make the labels appear and the second half to make them move. Also, fun fact: changing the first half will let us easily animate the labels as they enter.
-				sliceLabel.data(donut(amounts()));
+				sliceLabel.data(donut(myAmounts));
 				sliceLabel.transition().ease("elastic").duration(dur)
 				.attr("x", r-width/4)
 				.attr("y", 0)
