@@ -196,7 +196,7 @@ function DinerCtrl($scope) {
 
 				//Check if total is zero
 				if(0 == $scope.total()) {
-					for( var i = 0; i < myAmounts.length; i++ ) {
+					for( var i = 0; i < amounts().length; i++ ) {
 						myAmounts[i] = 1;
 					}
 				}
