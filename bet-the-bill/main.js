@@ -189,11 +189,12 @@ function DinerCtrl($scope) {
 
 
 				myAmounts = amounts();
-				//Check if total is zero
+				//If total is zero, draw slices as if they were equal (to 1)
 				if(0 == $scope.total()) {
 					for( var i = 0; i < myAmounts.length; i++ ) {
 						myAmounts[i] = 1;
 					}
+				}
 
 				var arcs = arc_grp.selectAll("path")
 						.data(donut(myAmounts));
@@ -254,7 +255,6 @@ function DinerCtrl($scope) {
 
 				//pieLabel.text(data.label);
 			}
-		}
 
 		// initialize d3 plot
 		$scope.updateChart()
