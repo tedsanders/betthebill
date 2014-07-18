@@ -196,7 +196,7 @@ function DinerCtrl($scope) {
 					}
 
 				var arcs = arc_grp.selectAll("path")
-						.data(donut(amounts());
+						.data(donut(amounts()));
 				arcs.enter().append("svg:path")
 						.attr("stroke", "white")
 						.attr("stroke-width", 0.5)
