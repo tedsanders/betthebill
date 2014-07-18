@@ -27,7 +27,7 @@ function DinerCtrl($scope) {
    $scope.addDiner = function() {
       $scope.diners.push({
          'name': 'Diner ' + $scope.nextDiner,
-         'amount': 1,
+         'amount': 0,
 		 'id': $scope.nextDiner
       });
       $scope.nextDiner++;
