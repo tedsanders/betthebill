@@ -210,7 +210,7 @@ function DinerCtrl($scope) {
 				// DRAW SLICE LABELS
 				// Warning: some numbers are hardcoded in below. FYI.
 				var sliceLabel = label_group.selectAll("text")
-						.data(donut(amounts());
+						.data(donut(amounts()));
 				sliceLabel.enter().append("svg:text")
 						.attr("class", "arcLabel")
 						.attr("x", r-width/4)
