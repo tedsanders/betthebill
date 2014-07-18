@@ -27,13 +27,11 @@ function DinerCtrl($scope) {
    $scope.addDiner = function() {
       $scope.diners.push({
          'name': 'Diner ' + $scope.nextDiner,
-         'amount': 0,
+         'amount': 1,
 		 'id': $scope.nextDiner
       });
       $scope.nextDiner++;
-			//$scope.redraw()
 			$scope.updateChart()
-
 
 	  if(1 < $scope.diners.length) $scope.disableRemoveDiner = false;
    }
