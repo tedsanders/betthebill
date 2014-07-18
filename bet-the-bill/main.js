@@ -70,7 +70,7 @@ function DinerCtrl($scope) {
       var total = $scope.total(); // get total
 
       // only bother computing a loser if the total exists. Also avoids divide-by-zero error in the pie chart drawing function.
-      if(0 != total) {
+      if(0 == total) { total = $scope.diners.length}
 
 	      var die = Math.random() * total; // roll a die. By the way, Math.random includes 0 but excludes 1.
 	      var cumTotal = 0;
@@ -108,10 +108,10 @@ function DinerCtrl($scope) {
 
 
 
-      }
+      /*}
 
       //otherwise, if the total is 0:
-      if(0 == total) $scope.showNullResult = true;
+      if(0 == total) $scope.showNullResult = true;*/
 
       $scope.disableBackButton = false;
 
