@@ -196,13 +196,13 @@ function DinerCtrl($scope) {
 
 				//Check if total is zero
 				if(0 == $scope.total()) {
-					for( var i = 0; i < amounts().length; i++ ) {
+					for( var i = 0; i < myAmounts.length; i++ ) {
 						myAmounts[i] = 1;
 					}
 				}
 
 				var arcs = arc_grp.selectAll("path")
-						.data(donut(amounts()));
+						.data(donut(myAmounts);
 				arcs.enter().append("svg:path")
 						.attr("stroke", "white")
 						.attr("stroke-width", 0.5)
@@ -216,7 +216,7 @@ function DinerCtrl($scope) {
 				// DRAW SLICE LABELS
 				// Warning: some numbers are hardcoded in below. FYI.
 				var sliceLabel = label_group.selectAll("text")
-						.data(donut(amounts()));
+						.data(donut(myAmounts);
 				sliceLabel.enter().append("svg:text")
 						.attr("class", "arcLabel")
 						.attr("x", r-width/4)
