@@ -53,7 +53,6 @@ function DinerCtrl($scope) {
 
 		//Remove the diner and update the chart
      	$scope.diners.splice(idx, 1);
-			//$scope.redraw()
 			$scope.updateChart()
    }
 
@@ -63,14 +62,11 @@ function DinerCtrl($scope) {
       // hide the form
       $scope.showForm = false;
 
-      // disable back button for duration of spin - WARNING: THIS DOESN'T WORK!
-      $scope.disableBackButton = true;
-
       // compute result
       var total = $scope.total(); // get total
 
       // only bother computing a loser if the total exists. Also avoids divide-by-zero error in the pie chart drawing function.
-      if(0 == total) { total = $scope.diners.length }
+      if(0 == total) {total = $scope.diners.length;	}
 
 	      var die = Math.random() * total; // roll a die. By the way, Math.random includes 0 but excludes 1.
 	      var cumTotal = 0;
@@ -78,6 +74,7 @@ function DinerCtrl($scope) {
 
 	         // add this guy to cumulative total
 	         cumTotal += Math.ceil(100 * parseFloat($scope.diners[i].amount)) / 100; //Why ceil instead of round? Hmm.
+					if(0 == $scope.total()) cumTotal = (i+1); //more edge case shenanigans for 0 total
 
 	         // check if this guy has to pay
 	         // Note that the 'less than' comparison is essential for maximum fairness, given that Math.random includes 0 but not 1.
@@ -112,8 +109,6 @@ function DinerCtrl($scope) {
 
       //otherwise, if the total is 0:
       if(0 == total) $scope.showNullResult = true;*/
-
-      $scope.disableBackButton = false;
 
    }
 
