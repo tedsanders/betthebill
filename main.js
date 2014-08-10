@@ -44,7 +44,7 @@ function DinerCtrl($scope) {
       angular.forEach($scope.diners, function(d) {
          t += d.amount;
       });
-      return Math.ceil(parseFloat(t) * 100) / 100
+      return parseFloat(t);
    }
 
 	$scope.removeDiner = function(idx) {
@@ -100,7 +100,7 @@ function DinerCtrl($scope) {
 	      for (var i = 0; i < $scope.diners.length; i++) {
 
 	         // add this guy to cumulative total
-	         cumTotal += Math.ceil(100 * parseFloat($scope.diners[i].amount)) / 100; //Why ceil instead of round? Hmm.
+	         cumTotal += parseFloat($scope.diners[i].amount);
 					if(0 == $scope.total()) cumTotal = (i+1); //more edge case shenanigans for 0 total
 
 	         // check if this guy has to pay
@@ -143,11 +143,6 @@ function DinerCtrl($scope) {
       $scope.loser = $scope.diners[idx];
       $scope.showResult = true;
    }
-
-   // helpers
-   $scope.parseAmt = function(amt) {
-      return Math.ceil(parseFloat(amt) * 100) / 100;
-   };
 
 		// get array of diner amounts
 		var amounts = function() {
@@ -202,7 +197,7 @@ function DinerCtrl($scope) {
 
 
 				myAmounts = amounts();
-				//If total is zero, draw slices as if they were equal (to 1)
+				//If total is 0, draw slices as if they were equal (to 1)
 				if(0 == $scope.total()) {
 					for( var i = 0; i < myAmounts.length; i++ ) {
 						myAmounts[i] = 1;
