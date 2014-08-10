@@ -22,29 +22,30 @@ header {
   border-bottom: 1px solid #e5e5e5;
 }
 
-.upper-container {
+.upper-container,.lower-container {
   padding: 0 2rem;
   max-width: 48rem;
+  margin: 0 auto;
+  }
+
+.upper-container {
   min-height:100%;
-  height:auto !important;
-  height: 100%;
-  margin: 0 auto -3em;
+  margin-bottom: -3em;
 }
 
-.lower-container {
-  margin: 0 auto;
-  padding: 0 2rem;
-  max-width: 48rem;
+.upper-container:after {
+  content: "";
+  display: block;
+}
+
+.lower-container, .upper-container:after {
+  height: 3rem;
 }
 
 footer {
   margin: 0 auto;
   color: #777;
   border-top: 1px solid #e5e5e5;
-}
-
-footer, .push {
-  height: 3rem;
 }
 
 footer>p {
@@ -84,6 +85,7 @@ input.ng-valid.ng-dirty {
 #pie-chart {
     position:relative;
     overflow:hidden;
+    margin-bottom: 4rem;
 }
 
 #arrow {
