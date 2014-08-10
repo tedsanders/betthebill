@@ -6,41 +6,38 @@
       <meta charset="utf-8">
       <title>Bet the Bill</title>
       <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, user-scalable=no' />
-      <meta name="description" content="Bet the Bill: a fair way to split the bill when out with friends">
+      <meta name="description" content="Bet the Bill: a fun, fair way to split the bill when out with friends">
       <meta name="author" content="Ted Sanders and Niru Maheswaranathan">
       <link rel="shortcut icon" href="http://www.tedsanders.com/favicon.ico">
       <!-- css -->
-      <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-      <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-      <link href="bet-the-bill/styles.css" rel="stylesheet" type="text/css">
+      <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+      <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+      <link href="styles.css" rel="stylesheet" type="text/css">
       <!-- javascript -->
-      <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.2/angular.min.js"></script>
-      <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-      <script src="bet-the-bill/main.js" type="text/javascript"></script>
-      <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.4.10/d3.min.js" charset="utf-8"></script>
+      <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.2/angular.min.js"></script>
+      <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+      <script src="main.js" type="text/javascript"></script>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/d3/3.4.10/d3.min.js" charset="utf-8"></script>
    </head>
 
    <body>
-      <div class="container">
+      <div class="container"  ng-controller="DinerCtrl">
          <div class="header">
             <ul class="nav nav-pills pull-right">
-               <li class="active">
-                  <a href="#"  tabindex="-1">Home</a>
-               </li>
                <li>
-                  <a href="about.html"  tabindex="-1">About</a>
+                  <a id="about" type="button" ng-click="swapAbout()" tabindex="-1">About</a>
                </li>
             </ul>
-            <h3 class="text-muted">Bet the Bill</h3>
+            <h1 class="text-muted">Bet the Bill</h1>
          </div>
 
-         <div class="row marketing animate-create" ng-controller="DinerCtrl">
-
+         <div class="row marketing animate-create">
+           <div ng-show="showAbout">
+           <p>Have you thought about improving your communal culinary experience lately? BetTheBill is transforming the way that groups of people have been eating for hundreds of years. Rather dealing with the annoyance and pain of splitting checks, BetTheBill saves you time and energy by instead choosing one member of the group to cover the cost of the entire meal. </p>
+           <p>Here's how it works: once you enter the name and meal cost of each person in your party, our randomized algorithm chooses one unlucky person to pay for the entire meal. However, what makes BetTheBill different from other bets (such as credit card roulette), is that your chance of paying for the meal is proportional to how much you spend. This way it's fair no matter whether you got the house salad or the sirloin steak. </p>
+           </div>
             <div class="result" ng-show="showResult">
-               <h3>{{ loser.name }} (who owed {{ loser.amount | currency }}) must pay the total of {{ total() | currency}}</h3>
-            </div>
-            <div class="result" ng-show="showNullResult">
-               <h3>Everybody wins and nobody wins, becuase the total was zero. Hurray?</h3>
+               <p>{{ loser.name }} (who owed {{ loser.amount | currency }}) must pay the total of {{ total() | currency}}</p>
             </div>
             <form class="form-horizontal" ng-show="showForm">
                <div class="form-group" ng-repeat="diner in diners">
@@ -85,7 +82,7 @@
          </div>
 
          <!-- Experimental Pie Chart Works -->
-			<div id="pie-chart"><div id="arrow"></div></div>
+			<div id="pie-chart" ng-show="showPie"><div id="arrow"></div></div>
 
 
          <div class="footer">

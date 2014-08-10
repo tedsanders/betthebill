@@ -8,6 +8,8 @@ function DinerCtrl($scope) {
 
    // Initialize
    $scope.showResult = false;
+	 $scope.showAbout = false;
+	 $scope.showPie = true;
    $scope.diners = [{
       'name': 'Diner 1',
       'amount': 1,
@@ -56,6 +58,31 @@ function DinerCtrl($scope) {
 			$scope.updateChart()
    }
 
+	$scope.swapAbout = function() {
+		if(false === $scope.showAbout) {
+			$scope.showAbout = true;
+			$scope.showPie = false;
+			$scope.showForm = false;
+			$scope.showResult = false;
+			document.getElementById("about").innerHTML = "Home";
+		}
+
+		else{
+			$scope.showAbout = false;
+			$scope.showPie = true;
+			$scope.showForm = true;
+			$scope.showResult = false;
+			document.getElementById("about").innerHTML = "About";
+		}
+	}
+
+	$scope.goBack = function() {
+		$scope.showForm = true;
+		$scope.showResult = false;
+		$scope.showNullResult = false;
+		$scope.showPie = true;
+		$scope.showAbout = false;
+	}
 
    $scope.betBill = function() {
 
@@ -115,15 +142,6 @@ function DinerCtrl($scope) {
    $scope.setLoser = function(idx) {
       $scope.loser = $scope.diners[idx];
       $scope.showResult = true;
-   }
-
-   $scope.goBack = function() {
-      $scope.showForm = true;
-      $scope.showResult = false;
-      $scope.showNullResult = false;
-   }
-   $scope.startOver = function() {
-      window.location.reload() //I changed this to refresh the page. There is likely a better way to do things. Previously, this was a copy of the goBack function. -Ted
    }
 
    // helpers
@@ -254,16 +272,9 @@ function DinerCtrl($scope) {
 		// initialize d3 plot
 		$scope.updateChart()
 
+	//redraw pie chart on resize
 	window.onresize = function(event) {
 		$scope.updateChart();
 	}
 
 }
-/*
-		//Disable horizontal scroll
-		var offset = window.pageXOffset;
-   		$(window).scroll(function () {
-        	if(offset != window.pageXOffset)
-            	window.scrollTo(0, window.pageYOffset);
-    	});
-*/
