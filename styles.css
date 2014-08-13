@@ -66,7 +66,7 @@ input.ng-valid.ng-dirty {
 		border: 1px solid #58CAC9;
 }
 
-#bet-the-bill-button, #go-back-button, #add-diner-button {
+#bet-the-bill-button, #go-back-button, #add-diner-button, .x-button {
   width:100%;
 }
 
@@ -76,11 +76,16 @@ input.ng-valid.ng-dirty {
 
 #pie-chart>svg {
     pointer-events:none; /*so that buttons are not covered*/
-    -webkit-transition: transform 2718ms cubic-bezier(0.250, 0.460, 0.450, 0.940);
-       -moz-transition: transform 2718ms cubic-bezier(0.250, 0.460, 0.450, 0.940);
-         -o-transition: transform 2718ms cubic-bezier(0.250, 0.460, 0.450, 0.940);
-            transition: transform 2718ms cubic-bezier(0.250, 0.460, 0.450, 0.940); /* constant friction approximation */
-  }
+    -webkit-transition: transform 6000ms cubic-bezier(0.250, 0.460, 0.450, 0.940);
+       -moz-transition: transform 6000ms cubic-bezier(0.250, 0.460, 0.450, 0.940);
+         -o-transition: transform 6000ms cubic-bezier(0.250, 0.460, 0.450, 0.940);
+            transition: transform 6000ms cubic-bezier(0.250, 0.460, 0.450, 0.940); /* constant friction approximation */
+
+-webkit-transition-timing-function: cubic-bezier(0.135, 0.000, 0.305, 1.000);
+   -moz-transition-timing-function: cubic-bezier(0.135, 0.000, 0.305, 1.000);
+     -o-transition-timing-function: cubic-bezier(0.135, 0.000, 0.305, 1.000);
+        transition-timing-function: cubic-bezier(0.135, 0.000, 0.305, 1.000); /* with ease-in */
+    }
 
 #pie-chart {
     position:relative;

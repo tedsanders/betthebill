@@ -82,6 +82,7 @@ function DinerCtrl($scope) {
 		$scope.showNullResult = false;
 		$scope.showPie = true;
 		$scope.showAbout = false;
+		document.getElementById("about").innerHTML = "About";
 	}
 
    $scope.betBill = function() {
@@ -120,7 +121,7 @@ function DinerCtrl($scope) {
 	      wheel.removeAttribute('style');
 
 	      //Third, it computes a new position for the wheel
-	      wheelposition = wheelposition - wheelposition%360 + 1440 - 360*die/total; //The -wheelposition%360 is for when people use the Go Back button and spin again. This effectively resets the wheelposition to 0 so that a rotation by 360*die/total lands on the correct section.
+	      wheelposition = wheelposition - wheelposition%360 + 1800 - 360*die/total; //The -wheelposition%360 is for when people use the Go Back button and spin again. This effectively resets the wheelposition to 0 so that a rotation by 360*die/total lands on the correct section.
 	      var css = '-webkit-transform: rotate(' + wheelposition + 'deg);'
 	            + 'transform: rotate(' + wheelposition + 'deg);';
 
