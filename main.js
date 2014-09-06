@@ -72,7 +72,7 @@ function DinerCtrl($scope) {
 			$scope.showPie = true;
 			$scope.showForm = true;
 			$scope.showResult = false;
-			document.getElementById("about").innerHTML = "About";
+			document.getElementById("about").innerHTML = "(What is Bet the Bill?)";
 		}
 	}
 
@@ -82,7 +82,7 @@ function DinerCtrl($scope) {
 		$scope.showNullResult = false;
 		$scope.showPie = true;
 		$scope.showAbout = false;
-		document.getElementById("about").innerHTML = "About";
+		document.getElementById("about").innerHTML = "(What is Bet the Bill?)";
 	}
 
    $scope.betBill = function() {
@@ -190,7 +190,7 @@ function DinerCtrl($scope) {
 			///////////////////////////////////////////////////
 			width = document.getElementById('pie-chart').offsetWidth
 			r = width/2
-			arc = d3.svg.arc().innerRadius(0).outerRadius(r - width/20);
+			arc = d3.svg.arc().innerRadius(0).outerRadius(r*11/12);
 			svg.attr("width", width).attr("height", width)
 			arc_grp.attr("transform", "translate(" + (width / 2) + "," + (width / 2) + ")");
 			label_group.attr("transform", "translate(" + (width / 2) + "," + (width / 2) + ")");
@@ -208,8 +208,8 @@ function DinerCtrl($scope) {
 				var arcs = arc_grp.selectAll("path")
 						.data(donut(myAmounts));
 				arcs.enter().append("svg:path")
-						.attr("stroke", "white")
-						.attr("stroke-width", 0.5)
+						.attr("stroke", "black")
+						.attr("stroke-width", 0)
 						.attr("fill", function(d, i) {return getcolor[($scope.diners[i].id-1) % getcolor.length];})
 						.attr("d", arc)
 						.each(function(d) {this._current = d});
@@ -273,4 +273,7 @@ function DinerCtrl($scope) {
 		$scope.updateChart();
 	}
 
+	window.onload = function() {
+	document.getElementByTagName("tr").classList.add('animate-row');
+	}
 }
