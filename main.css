@@ -50,20 +50,22 @@ a:hover {
 }
 
 table {
+  table-layout:auto;
   border-collapse: collapse;
   width: 100%;
 }
 
 td, th {
   padding: 0.25rem;
-  /*border: 1px solid black;/**/
+  border: 1px solid black;/**/
+  vertical-align: middle;
 }
 
 input, input:valid {
 display: block;
 width: 100%;
 height: 2rem;
-padding: 0.5rem;
+padding: 0 0.5rem;
 line-height: 1;
 color: #555;
 background-color: #fff;
@@ -78,6 +80,8 @@ box-sizing: border-box;
 
 text-align:right;
 outline:none;
+
+padding-top:1px;
 }
 
 input:invalid {
@@ -93,15 +97,17 @@ input:focus {
 
 button {
   display:inline-block;
-  -webkit-appearance:button
+  -webkit-appearance:button;
   margin: 0;
   color:white;
   height: 2rem;
   width: 100%;
 
+  padding-top:1px;
+
 text-align: center;
 white-space: nowrap;
-vertical-align: middle;
+/*vertical-align: middle;*/
 cursor: pointer;
 -webkit-user-select: none;
 -moz-user-select: none;
@@ -112,6 +118,8 @@ border: 1px solid transparent;
 border-radius: 0.25rem;
 }
 
+button:focus, a:focus {outline:0;} /*removes chrome accessibility feature*/
+
 .remove-diner {
 background-color: #d9534f;
 border-color: #d43f3a;
@@ -119,8 +127,10 @@ width: 2rem;
 
 font-weight:bold;
 font-size:1.5rem;
-/*float:right; /*shouldn't matter but fixes alignment/table-sizing bug in FireFox??*/
+/*float:right; /*shouldn't matter but fixes alignment/table-sizing bug?*/
 }
+
+.table-cell {display:table-cell;}
 
 .remove-diner:hover,.remove-diner:focus,.remove-diner:active {
   background-color: #c9302c;

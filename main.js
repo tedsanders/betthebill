@@ -14,12 +14,16 @@ function DinerCtrl($scope) {
       'name': 'Diner 1',
       'amount': 1,
 	  'id': 1
-   }, {
-      'name': 'Diner 2',
-      'amount': 2,
-	  'id': 2
-   }];
-   $scope.nextDiner = 3;
+	}, {
+			'name': 'Diner 2',
+			'amount': 1,
+		'id': 2
+	}, {
+		'name': 'Diner 3',
+		'amount': 1,
+	'id': 3
+	}];
+   $scope.nextDiner = 4;
    $scope.total = 0;
    $scope.showForm = true;
    //$scope.disableBackButton = true;
@@ -29,7 +33,7 @@ function DinerCtrl($scope) {
    $scope.addDiner = function() {
       $scope.diners.push({
          'name': 'Diner ' + $scope.nextDiner,
-         'amount': 0,
+         'amount': 1,
 		 'id': $scope.nextDiner
       });
       $scope.nextDiner++;
