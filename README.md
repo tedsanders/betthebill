@@ -1,3 +1,3 @@
 # Bet the Bill
 
-more information coming
+The easy, fair way to split a bill.

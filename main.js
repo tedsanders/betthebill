@@ -161,7 +161,7 @@ function DinerCtrl($scope) {
 			r = width/2,
 			dur = 1000,           // duration, in milliseconds
 			donut = d3.layout.pie().sort(null),
-			arc = d3.svg.arc().innerRadius(0).outerRadius(r - width/20);
+			arc = d3.svg.arc().innerRadius(0).outerRadius(r*11/12);
 
 		// ---------------------------------------------------------------------
 		var svg = d3.select("#pie-chart").append("svg:svg")
@@ -188,10 +188,10 @@ function DinerCtrl($scope) {
 		// update chart
 		$scope.updateChart = function() {
 			///////////////////////////////////////////////////
-			width = document.getElementById('pie-chart').offsetWidth
-			r = width/2
+			width = document.getElementById('pie-chart').offsetWidth;
+			r = width/2;
 			arc = d3.svg.arc().innerRadius(0).outerRadius(r*11/12);
-			svg.attr("width", width).attr("height", width)
+			svg.attr("width", width).attr("height", width);
 			arc_grp.attr("transform", "translate(" + (width / 2) + "," + (width / 2) + ")");
 			label_group.attr("transform", "translate(" + (width / 2) + "," + (width / 2) + ")");
 			///////////////////////////////////////////////////
@@ -227,7 +227,7 @@ function DinerCtrl($scope) {
 						.attr("y", 0)
 						.attr("transform", function(d) {
 										var coordinates = arc.centroid(d);
-										var rotationangle = Math.atan(coordinates[1]/coordinates[0])*180/3.1415926;
+										var rotationangle = Math.atan(coordinates[1]/coordinates[0])*180/3.14159265358;
 										if(coordinates[0] < 0) { rotationangle = rotationangle-180; }
 										return "rotate(" + rotationangle + ")"; })
 						.attr("text-anchor", "middle")
