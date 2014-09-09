@@ -277,7 +277,7 @@ function DinerCtrl($scope) {
 		$scope.updateChart();
 	}
 
-	window.onload = function() {
+	/*window.onload = function() {
 	document.getElementByTagName("tr").classList.add('animate-row');
-	}
+}*/
 }
