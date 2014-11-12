@@ -1,0 +1,205 @@
+html, body, div, span, h1, h2, p, a, em, img, small, strike, strong, sub, sup, tt, b, u, i, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, footer, header, hgroup, nav {margin:0;padding:0;border:0;font-size:100%; font:inherit;}
+p {margin: 1rem 0;}
+h3 {margin: 1rem auto;text-align:center;}
+
+body {
+  overflow-x:none;
+}
+
+body, button, input {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 1rem;
+}
+
+header {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 2rem;
+  text-align:center;
+  margin: 0 auto;
+}
+
+#aboutaa {
+  margin: 0 auto;
+  position:absolute;
+  right: 0;
+  bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+#about-container {
+  text-align:center;
+}
+
+#total {
+  padding-right: 0.5rem;
+  float:right;
+}
+
+a {
+  margin: 0 auto;
+  color: blue;
+  text-decoration:none;
+}
+
+a:hover {
+  text-decoration:underline;
+}
+
+table {
+  table-layout:auto;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  padding: 0.25rem;
+  /*border: 1px solid black;/**/
+  vertical-align: middle;
+}
+
+input, input:valid {
+display: block;
+width: 100%;
+height: 2rem;
+padding: 0 0.5rem;
+line-height: 1;
+color: #555;
+background-color: #fff;
+border: 1px solid #ccc;
+border-radius: 0.25rem;
+-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+-webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+-o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+box-sizing: border-box;
+
+text-align:right;
+outline:none;
+
+padding-top:1px;
+}
+
+input:invalid {
+  background-color:#faa;
+}
+
+input:focus {
+  border-color: #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+          box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+}
+
+button {
+  display:inline-block;
+  -webkit-appearance:button;
+  margin: 0;
+  color:white;
+  height: 2rem;
+  width: 100%;
+
+  padding-top:1px;
+
+text-align: center;
+white-space: nowrap;
+/*vertical-align: middle;*/
+cursor: pointer;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+background-image: none;
+border: 1px solid transparent;
+border-radius: 0.25rem;
+}
+
+button:focus, a:focus {outline:0;} /*removes chrome accessibility feature*/
+
+.table-cell {display:table-cell;}
+
+#bet-the-bill {
+background-color: #5cb85c;
+border-color: #4cae4c;
+/*height:4rem;
+font-size:2rem;
+font-weight:bold;
+font-size:1.25rem;*/
+}
+
+#bet-the-bill:hover,#bet-the-bill:focus,#bet-the-bill:active {
+  background-color: #449d44;
+  border-color: #398439;
+}
+
+#go-back {
+background-color: #999;
+border-color: #888;
+}
+
+#go-back:hover,#go-back:focus,#go-back:active {
+  background-color: #888;
+}
+
+#container {
+  padding: 0 0.5rem;
+  max-width: 32rem;
+  margin: 0 auto;
+  }
+
+/*form validation*/
+input.ng-invalid.ng-dirty {
+		border: 1px solid #FA787E;
+}
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    /*display: none;*/
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
+}
+
+.pull-left{float:left}
+.pull-right{float:right}
+
+/******************
+** PIE CHART CSS **
+******************/
+
+#pie-chart>svg {
+    pointer-events:none; /*so that buttons are not covered*/
+    -webkit-transition: transform 5000ms cubic-bezier(0.135, 0.000, 0.305, 1.000);
+       -moz-transition: transform 5000ms cubic-bezier(0.135, 0.000, 0.305, 1.000);
+         -o-transition: transform 5000ms cubic-bezier(0.135, 0.000, 0.305, 1.000);
+            transition: transform 5000ms cubic-bezier(0.135, 0.000, 0.305, 1.000);
+    }
+
+#pie-chart {
+    position:relative;
+    overflow:hidden;
+    margin-bottom: 4rem;
+}
+
+#arrow {
+    position:absolute;
+    top: 0;
+    left: 50%;
+    -webkit-transform: translateX(-32px);
+    transform: translateX(-32px);
+    z-index:2;
+
+
+    width: 0;
+    height: 0;
+    border-left: 32px solid transparent;
+    border-right: 32px solid transparent;
+    border-top:32px solid black;
+}

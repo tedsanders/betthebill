@@ -1,1 +1,3 @@
-All the code is in the gh-pages branch.
+# Bet the Bill
+
+The easy, fair way to split a bill.
