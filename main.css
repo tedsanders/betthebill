@@ -198,8 +198,8 @@ input[type=number] {
 #result {
   /*testing*/
 
-animation-name: fade;
--webkit-animation-name: fade;
+animation-name: fade-in-after-spin;
+-webkit-animation-name: fade-in-after-spin;
 
 animation-duration: 5.25s;
 -webkit-animation-duration: 5.25s;
@@ -245,8 +245,8 @@ animation-timing-function: ease-in-out;
 /************************/
 
 .animate-row{
-	animation-name: fade;
-	-webkit-animation-name: fade;
+	animation-name: fade-in;
+	-webkit-animation-name: fade-in;
 
 	animation-duration: 0.25s;
 	-webkit-animation-duration: 0.25s;
@@ -257,12 +257,22 @@ animation-timing-function: ease-in-out;
 	visibility: visible !important;
 }
 
-@-webkit-keyframes fade {
+@-webkit-keyframes fade-in {
     from {opacity: 0}
     to {opacity: 1}
-}@keyframes fade {
+}@keyframes fade-in {
     from {opacity: 0}
     to {opacity: 1}
+}
+
+@-webkit-keyframes fade-in-after-spin {
+    0% {opacity: 0}
+    95% {opacity: 0}
+    100% {opacity: 1}
+}@keyframes fade-in-after-spin {
+    0% {opacity: 0}
+    95% {opacity: 0}
+    100% {opacity: 1}
 }
 
 .animate-add{
