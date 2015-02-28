@@ -160,7 +160,7 @@ border-color: #4cae4c;
 #go-back {
 background-color: #999;
 border-color: #888;
-margin-bottom: 2rem;
+margin-bottom: 1rem;
 }
 
 #go-back:hover,#go-back:focus,#go-back:active {
@@ -193,7 +193,7 @@ input[type=number] {
 .pull-right{float:right}
 
 #result {
-font-size: 2rem;
+font-size: 1.5rem;
 text-align:center;
 margin: 0 auto;
 
