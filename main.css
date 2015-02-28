@@ -4,6 +4,14 @@ h3 {margin: 1rem auto;text-align:center;}
 
 body {
   overflow-x:none;
+  animation-name: fade-in;
+  -webkit-animation-name: fade-in;
+
+  animation-duration: 0.25s;
+  -webkit-animation-duration: 0.25s;
+
+  animation-timing-function: ease-in-out;
+  -webkit-animation-timing-function: ease-in-out;
 }
 
 body, button, input {
