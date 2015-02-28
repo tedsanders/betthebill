@@ -198,16 +198,11 @@ input[type=number] {
 #result {
   /*testing*/
 
-  opacity: 0;
-  
-    -webkit-animation-delay: 5s; /* Chrome, Safari, Opera */
-    animation-delay: 5s;
-
 animation-name: fade;
 -webkit-animation-name: fade;
 
-animation-duration: 0.25s;
--webkit-animation-duration: 0.25s;
+animation-duration: 5.25s;
+-webkit-animation-duration: 5.25s;
 
 animation-timing-function: ease-in-out;
 -webkit-animation-timing-function: ease-in-out;
