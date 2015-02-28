@@ -21,24 +21,6 @@
             <h2 id="about-container"><a href="" id="about" ng-click="swapAbout()" tabindex="-1">(What is Bet the Bill?)</a></h2>
          </header>
 
-         <div ng-show="showAbout">
-         <p>Bet the Bill is an easy way to split the bill at a restaurant. Here’s how it works:</p>
-         <p>Rather than forcing you to bother your server or dig out change or perform mental math, Bet the Bill randomly picks one member of your party to pay the entire bill. Your odds of being chosen are proportional to the cost of your meal, so no matter whether you got the Caesar salad or the sirloin steak, it's 100% fair.</p>
-         <p>Just type in the cost of each person’s meal and then tap ‘Bet the Bill.’ It’s that easy!</p>
-         <!--h3>Frequently Asked Questions:</h3>
-         <h4>Is Bet the Bill really fair? How do I know?</h4>
-         <p>Yes. Bet the Bill is a locally run, open-source application with source code hosted at <a href="https://github.com/tedsanders/BetTheBill/tree/gh-pages">GitHub</a>. Take a look at the source code and you'll see that fairness is guaranteed within the limits of floating point precision and whatever random number generator your javascript engine uses.</p>
-         <h4>Will the luck balance out in the long run?</h4>
-         <p>No. Randomness has no memory of your past bets. The more often you bet, the more you stand to lose.</p>
-         <h4>How do we handle tax and tip?</h4>
-         <p>You don't! As long as you agree that people should pay tax and tip proportional to the cost of their meal, then adding tax and tip is totally unnecessary.</p>
-         <h4>Can I use this for debts besides restaurant bills?</h4>
-         <p>Yep!</p>
-         <h4>Is there an iPhone or Android or Windows Phone or XYZ app version?</h4>
-         <p>Sort of. App versions are available - however, they are NOT for sale on the iPhone or Google Play stores. The reason for this is that it costs roughly $100 to publish an app and I don't want to pay $100.</p>
-         -->
-         </div>
-
         <form ng-show="showForm">
          <table>
            <tr class="animate-row" ng-repeat="diner in diners">
@@ -61,6 +43,24 @@
 
          <div id="result" ng-show="showResult">
            <p>{{ loser.name }} (who owed {{ loser.amount | currency }}) must pay the total of {{ total() | currency}}</p>
+         </div>
+
+         <div ng-show="showAbout">
+         <p>Bet the Bill is an easy way to split the bill at a restaurant. Here’s how it works:</p>
+         <p>Rather than forcing you to bother your server or dig out change or perform mental math, Bet the Bill randomly picks one member of your party to pay the entire bill. Your odds of being chosen are proportional to the cost of your meal, so no matter whether you got the Caesar salad or the sirloin steak, it's 100% fair.</p>
+         <p>Just type in the cost of each person’s meal and then tap ‘Bet the Bill.’ It’s that easy!</p>
+         <!--h3>Frequently Asked Questions:</h3>
+         <h4>Is Bet the Bill really fair? How do I know?</h4>
+         <p>Yes. Bet the Bill is a locally run, open-source application with source code hosted at <a href="https://github.com/tedsanders/BetTheBill/tree/gh-pages">GitHub</a>. Take a look at the source code and you'll see that fairness is guaranteed within the limits of floating point precision and whatever random number generator your javascript engine uses.</p>
+         <h4>Will the luck balance out in the long run?</h4>
+         <p>No. Randomness has no memory of your past bets. The more often you bet, the more you stand to lose.</p>
+         <h4>How do we handle tax and tip?</h4>
+         <p>You don't! As long as you agree that people should pay tax and tip proportional to the cost of their meal, then adding tax and tip is totally unnecessary.</p>
+         <h4>Can I use this for debts besides restaurant bills?</h4>
+         <p>Yep!</p>
+         <h4>Is there an iPhone or Android or Windows Phone or XYZ app version?</h4>
+         <p>Sort of. App versions are available - however, they are NOT for sale on the iPhone or Google Play stores. The reason for this is that it costs roughly $100 to publish an app and I don't want to pay $100.</p>
+         -->
          </div>
 
          <form class="form-horizontal" ng-hide="showForm">
