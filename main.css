@@ -197,6 +197,9 @@ input[type=number] {
 
 #result {
   /*testing*/
+
+  opacity: 0;
+  
     -webkit-animation-delay: 5s; /* Chrome, Safari, Opera */
     animation-delay: 5s;
 
