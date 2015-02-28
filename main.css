@@ -195,6 +195,21 @@ input[type=number] {
 .pull-left{float:left}
 .pull-right{float:right}
 
+#result {
+  /*testing*/
+    -webkit-animation-delay: 5s; /* Chrome, Safari, Opera */
+    animation-delay: 5s;
+
+animation-name: fade;
+-webkit-animation-name: fade;
+
+animation-duration: 0.25s;
+-webkit-animation-duration: 0.25s;
+
+animation-timing-function: ease-in-out;
+-webkit-animation-timing-function: ease-in-out;
+}
+
 /******************
 ** PIE CHART CSS **
 ******************/
