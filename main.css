@@ -150,10 +150,6 @@ border-color: #46b8da;
 #bet-the-bill {
 background-color: #5cb85c;
 border-color: #4cae4c;
-/*height:4rem;
-font-size:2rem;
-font-weight:bold;
-font-size:1.25rem;*/
 }
 
 #bet-the-bill:hover,#bet-the-bill:focus,#bet-the-bill:active {
@@ -164,6 +160,7 @@ font-size:1.25rem;*/
 #go-back {
 background-color: #999;
 border-color: #888;
+margin-bottom: 2rem;
 }
 
 #go-back:hover,#go-back:focus,#go-back:active {
@@ -225,7 +222,6 @@ animation-timing-function: ease-in-out;
 #pie-chart {
     position:relative;
     overflow:hidden;
-    margin-bottom: 4rem;
 }
 
 #arrow {
