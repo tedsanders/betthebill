@@ -236,7 +236,8 @@ function DinerCtrl($scope) {
 										return "rotate(" + rotationangle + ")"; })
 						.attr("text-anchor", "middle")
 						.attr("alignment-baseline", "middle")
-						.attr("text-overflow", "ellipsis")
+						.attr("textLength", "222")
+						.attr("lengthAdjust", "spacing")
 						.text(function(d, i) {return $scope.diners[i].name; })
 						.attr("style", function(d) {
 														if(d.data > 0 ) { return "font-size: " + width/12 + "px;"}
