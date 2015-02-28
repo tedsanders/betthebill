@@ -4,14 +4,6 @@ h3 {margin: 1rem auto;text-align:center;}
 
 body {
   overflow-x:none;
-  animation-name: fade-in;
-  -webkit-animation-name: fade-in;
-
-  animation-duration: 0.25s;
-  -webkit-animation-duration: 0.25s;
-
-  animation-timing-function: ease-in-out;
-  -webkit-animation-timing-function: ease-in-out;
 }
 
 body, button, input {
@@ -204,7 +196,9 @@ input[type=number] {
 .pull-right{float:right}
 
 #result {
-  /*testing*/
+font-size: 2rem;
+text-align:center;
+margin: 0 auto;
 
 animation-name: fade-in-after-spin;
 -webkit-animation-name: fade-in-after-spin;
