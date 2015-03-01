@@ -42,7 +42,7 @@
          <div id="pie-chart" ng-show="showPie"><div id="arrow"></div></div>
 
          <div id="result" ng-show="showResult">
-           <p>{{ loser.name }} (who owed {{ loser.amount | currency }}) must pay the total of {{ total() | currency}}</p>
+           <p>{{ loser.name }}, who owed {{ loser.amount | currency }}, must pay the total of {{ total() | currency}}</p>
          </div>
 
          <div ng-show="showAbout">

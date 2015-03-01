@@ -202,6 +202,11 @@ function DinerCtrl($scope) {
 
 
 				myAmounts = amounts();
+				//If an amount is negative, don't redraw anything - it breaks the graph, literally
+				for(var i=0; i<myAmounts.length; i++) {
+					if(0 > myAmounts[i]) return;
+				}
+
 				//If total is 0, draw slices as if they were equal (to 1)
 				if(0 == $scope.total()) {
 					for( var i = 0; i < myAmounts.length; i++ ) {
