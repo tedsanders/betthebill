@@ -92,7 +92,7 @@ function DinerCtrl($scope) {
    $scope.betBill = function() {
 
       // hide the form
-      //$scope.showForm = false;
+      $scope.showForm = false;
 
       // compute result
       var total = $scope.total(); // get total
