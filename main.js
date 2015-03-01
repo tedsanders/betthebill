@@ -203,6 +203,7 @@ function DinerCtrl($scope) {
 
 				myAmounts = amounts();
 				//If an amount is negative, don't redraw anything - it breaks the graph, literally
+				//Speaking of broken, this section isn't working
 				for(var i=0; i<myAmounts.length; i++) {
 					if(0 > myAmounts[i]) {
 						alert("illegal value!");
