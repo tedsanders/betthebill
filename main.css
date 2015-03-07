@@ -259,7 +259,8 @@ animation-timing-function: ease-in-out;
 @-webkit-keyframes fade-in {
     from {opacity: 0}
     to {opacity: 1}
-}@keyframes fade-in {
+}
+@keyframes fade-in {
     from {opacity: 0}
     to {opacity: 1}
 }
@@ -268,7 +269,8 @@ animation-timing-function: ease-in-out;
     0% {opacity: 0}
     95% {opacity: 0}
     100% {opacity: 1}
-}@keyframes fade-in-after-spin {
+}
+@keyframes fade-in-after-spin {
     0% {opacity: 0}
     95% {opacity: 0}
     100% {opacity: 1}
