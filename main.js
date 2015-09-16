@@ -237,7 +237,7 @@ function DinerCtrl($scope) {
 				sliceLabel.enter().append("svg:text")
 						.attr("class", "arcLabel")
 						.attr("x", r-width/4)
-						.attr("y", -width/24)
+						.attr("y", width/24)
 						.attr("transform", function(d) {
 										var coordinates = arc.centroid(d);
 										var rotationangle = Math.atan(coordinates[1]/coordinates[0])*180/3.14159265358;
@@ -262,7 +262,7 @@ function DinerCtrl($scope) {
 				sliceLabel.data(donut(myAmounts));
 				sliceLabel.transition().ease("elastic").duration(dur)
 				.attr("x", r-width/4)
-				.attr("y", -width/24)
+				.attr("y", width/24)
 				.attr("transform", function(d) {
 								var coordinates = arc.centroid(d)
 								var rotationangle = Math.atan(coordinates[1]/coordinates[0])*180/3.1415926;
