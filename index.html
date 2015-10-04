@@ -24,8 +24,11 @@
         <form ng-show="showForm">
          <table>
            <tr class="animate-row" ng-repeat="diner in diners">
-             <td><input class="diner-name" type="text" ng-model="diner.name" ng-change="updateChart()" onclick="this.setSelectionRange(0,999)"><!--0,999 is for Mobile Safari bug--></td>
-             <td><input class="diner-amount" type="number" step="any" min="0" smart-float ng-model="diner.amount" ng-change="updateChart()" onclick="select()"><!--"this.setSelectionRange(0,999)" is for Mobile Safari bug--></td>
+             <td><input class="diner-name" type="text" ng-model="diner.name" ng-change="updateChart()" onclick="this.setSelectionRange(0,this.value.length)"><!--for Mobile Safari bug--></td>
+             <td><input class="diner-amount" type="number" step="any" min="0" smart-float ng-model="diner.amount" ng-change="updateChart()" onclick="
+               if(/iPad|iPhone|iPod/.test(navigator.platform)) {this.setSelectionRange(0,this.value.length)}
+               else {this.select()}
+               "><!--"this.setSelectionRange(0,999)" is for Mobile Safari bug--></td>
              <th><button class="remove-diner" ng-click="removeDiner($index)" type="button" ng-disabled="disableRemoveDiner" tabindex="-1">&times;</button></th>
            </tr>
            <tr class="animate-add">
