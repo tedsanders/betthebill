@@ -223,7 +223,7 @@ animation-timing-function: ease-in-out;
 ** PIE CHART CSS **
 ******************/
 
-#pie-chart>svg {
+svg {
     pointer-events:none; /*so that buttons are not covered*/
     -webkit-transition: transform 5000ms cubic-bezier(0.135, 0.000, 0.305, 1.000);
        -moz-transition: transform 5000ms cubic-bezier(0.135, 0.000, 0.305, 1.000);
