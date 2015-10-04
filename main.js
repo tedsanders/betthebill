@@ -205,9 +205,8 @@ function DinerCtrl($scope) {
 				//If an amount is negative, don't redraw anything - it breaks the graph, literally
 				//Speaking of broken, this section isn't working
 				for(var i=0; i<myAmounts.length; i++) {
-					if(0 > myAmounts[i]) {
-						alert("illegal value!");
-						return;
+					if(!(0 <= myAmounts[i])) {
+						myAmounts[i]=0;
 					}
 				}
 
@@ -230,6 +229,7 @@ function DinerCtrl($scope) {
 				// remove old paths
 				arcs.exit().remove()
 
+
 				// DRAW SLICE LABELS
 				// Warning: some numbers are hardcoded in below. FYI.
 				var sliceLabel = label_group.selectAll("text")
@@ -237,14 +237,14 @@ function DinerCtrl($scope) {
 				sliceLabel.enter().append("svg:text")
 						.attr("class", "arcLabel")
 						.attr("x", r-width/4)
-						.attr("y", width/24*3/4)//fudge factor
+						.attr("y", 0)
 						.attr("transform", function(d) {
 										var coordinates = arc.centroid(d);
 										var rotationangle = Math.atan(coordinates[1]/coordinates[0])*180/3.14159265358;
 										if(coordinates[0] < 0) { rotationangle = rotationangle-180; }
 										return "rotate(" + rotationangle + ")"; })
 						.attr("text-anchor", "middle")
-						.attr("alignment-baseline", "middle")
+						.attr("dominant-baseline", "central")
 						.text(function(d, i) {return $scope.diners[i].name; })
 						.attr("style", function(d) {
 														if(d.data > 0 ) { return "font-size: " + width/12 + "px;"}
@@ -262,14 +262,14 @@ function DinerCtrl($scope) {
 				sliceLabel.data(donut(myAmounts));
 				sliceLabel.transition().ease("elastic").duration(dur)
 				.attr("x", r-width/4)
-				.attr("y", width/24*3/4)//fudge factor
+				.attr("y", 0)
 				.attr("transform", function(d) {
 								var coordinates = arc.centroid(d)
 								var rotationangle = Math.atan(coordinates[1]/coordinates[0])*180/3.1415926;
 								if(coordinates[0] < 0) { rotationangle = rotationangle-180; }
 								return "rotate(" + rotationangle + ")"; })
 				.attr("text-anchor", "middle")
-				.attr("alignment-baseline", "middle")
+				.attr("dominant-baseline", "central")
 				.text(function(d, i) {return $scope.diners[i].name; })
 				.attr("style", function(d) {
 												if(d.data > 0 ) { return "font-size: " + width/12 + "px;"}
@@ -286,7 +286,4 @@ function DinerCtrl($scope) {
 		$scope.updateChart();
 	}
 
-	/*window.onload = function() {
-	document.getElementByTagName("tr").classList.add('animate-row');
-}*/
 }
