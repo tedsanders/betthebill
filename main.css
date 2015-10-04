@@ -1,4 +1,15 @@
-html, body, div, span, h1, h2, p, a, em, img, small, strike, strong, sub, sup, tt, b, u, i, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, footer, header, hgroup, nav {margin:0;padding:0;border:0;font-size:100%; font:inherit;}
+html, body, div, span, h1, h2, p, a, em, img, small, strike, strong, sub, sup, tt, b, u, i, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, footer, header, hgroup, nav {margin:0;padding:0;border:0;font-size:100%; font:inherit;
+
+  animation-name: fade-in;
+	-webkit-animation-name: fade-in;
+
+	animation-duration: 0.25s;
+	-webkit-animation-duration: 0.25s;
+
+	animation-timing-function: ease-in-out;
+	-webkit-animation-timing-function: ease-in-out;
+
+}
 p {margin: 1rem 0;}
 h3 {margin: 1rem auto;text-align:center;}
 
@@ -73,9 +84,9 @@ border: 1px solid #ccc;
 border-radius: 0.25rem;
 -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
 box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
--webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
--o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+-webkit-transition: border-color ease-in-out .1s,-webkit-box-shadow ease-in-out .1s;
+-o-transition: border-color ease-in-out .1s,box-shadow ease-in-out .1s;
+transition: border-color ease-in-out .1s,box-shadow ease-in-out .1s;
 box-sizing: border-box;
 
 text-align:right;
