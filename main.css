@@ -212,7 +212,8 @@ blockquote {
   padding-left: 0.5rem;
   padding-right: 1rem;
   padding-top: 1rem;
-  padding-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-radius:0.25rem;
 }
 blockquote:before {
   color: #999;
@@ -222,10 +223,8 @@ blockquote:before {
   margin-right: 0.25em;
   vertical-align: -0.4em;
 }
-blockquote p {
-  display: inline;
-}
-.testimonial {margin:0;font-style:italic}
+
+.testimonial {margin:0;font-style:italic;display:inline}
 .testimonial-author {margin-top:1rem;margin-bottom:0;float:right;}
 
 #resultcontainer {
