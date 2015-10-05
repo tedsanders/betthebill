@@ -54,35 +54,54 @@
          </div>
 
          <div ng-show="showAbout">
-         <p>Bet the Bill is the easiest way to split your restaurant bill and it's 100% fair.</p>
-         <p>To use Bet The Bill, just type in the cost of each person’s meal and then tap ‘Bet the Bill.’ It’s that easy! The app will choose someone to pay the entire bill</p>
-         <p>the hassles of bothering your server, digging out change, or trying to coordinate payments in Venmo/PayPal/Snapcash/Whatever.</p>
-         <p>Here’s how it works:</p>
-         <p>Instead of the typical solutions like bothering your server or digging out change, Bet the Bill randomly picks one member of your party to pay the entire bill. Your odds of paying are proportional to the cost of your meal, so whether you got the Caesar salad for six dollars or the sirloin steak for seventeen, it's 100% fair.</p>
-         <p></p>
+           <p>Bet the Bill is an easy, 100% fair way to split your restaurant bill.</p>
 
-         <h3>Frequently Asked Questions:</h3>
+           <p>Splitting restaurant bills is often a hassle, especially if you want to be fair. Either you choose to annoy your server with a line-item split request, you choose to dig for ones and quarters and pennies, or you choose to coordinate payments among Venmo or Snapcash or whatever patchily adopted app is hot at the time.</p>
 
-         <h4>Is Bet the Bill <em>really</em> fair?</h4>
-         <p>Yes. Bet the Bill is a locally run, open-source application with source code hosted at <a href="https://github.com/tedsanders/BetTheBill/tree/gh-pages">GitHub</a>. Take a look at the source code and you'll see that fairness is guaranteed within the limits of floating point precision and whatever random number generator your javascript engine uses.</p>
+           <p>Now there's a better way to pay: Bet the Bill.</p>
 
-         <h4>Will the luck balance out in the long run?</h4>
-         <p>No. Randomness has no memory of your past bets, so the more often you bet, the more you stand to lose.</p>
+           <p>To use Bet The Bill, just type in the cost of each person’s meal and then tap ‘Bet the Bill!’ The app will randomly choose someone to pay the entire bill so you can all get on with your lives, hassle-free.</p>
 
-         <h4>How do we handle tax and tip?</h4>
-         <p>You don't even need to! As long as you agree that people should pay tax and tip proportional to the cost of their meal, then adding tax and tip is unnecessary, because it won't change the odds.</p>
+           <p>Your odds of paying scale with your meal's cost, so whether you got the Caesar salad for six dollars or the sirloin steak for seventeen, Bet the Bill is 100% fair.</p>
 
-         <h4>Can I use this for debts besides restaurant bills?</h4>
-         <p>Yep!</p>
+           <h3>Frequently Asked Questions:</h3>
 
-         <h4>Where's the app version?</h4>
-         <p>App versions are in the works, but in the meantime, </p>
+           <h4>What exactly do you mean by fair?</h4>
+           <p>On average, you'll pay the cost of your meal. For example, if your meal cost $20 out of your party's $100 bill, then when you Bet the Bill you'll pay for everything 20% of the time on average (and 20% * $100 = $20).</p>
 
-         <h3>Testimonials</h3>
-         <p>"I owed $100,000 to the IRS, but one expensive dinner later I was debt-free!" -Todd Spanders</p>
+           <h4>Will my luck balance out in the long run?</h4>
+           <p>No. The more often you bet, the more you stand to lose.</p>
 
-         <h3>About the author</h3>
-         <p>Bet The Bill was designed by <a href="http://www.tedsanders.com/about">Ted</a> in California.</p>
+           <h4>Can I trust Bet the Bill?</h4>
+           <p>Yes. Bet the Bill an open-source application that runs locally on your device. View the source code yourself on <a href="https://github.com/tedsanders/BetTheBill/tree/gh-pages">GitHub</a> and you'll see that fairness is guaranteed within the limits of IEEE 754 floating point precision and whatever psuedo-random number generator is behind JavaScript's math.random() method.</p>
+
+           <h4>How should we handle tax and tip?</h4>
+           <p>You don't even need to! As long as you agree that people should pay tax and tip proportional to the cost of their meal, then computing tax and tip is unnecessary, because it won't change each person's odds of paying.</p>
+
+           <h4>Can I use this for debts besides restaurant bills?</h4>
+           <p>Yep!</p>
+
+           <h4>Is there an app version of Bet the Bill?</h4>
+           <p>App versions are in the works, but in the meantime, you can always <a href="http://www.howtogeek.com/196087/how-to-add-websites-to-the-home-screen-on-any-smartphone-or-tablet/">create a shortcut</a>. (The app versions are basically 99% done, but I can't figure out why the wheel won't animate. Stay tuned.)</p>
+
+           <h3>Testimonials</h3>
+             <blockquote>
+               <p class="testimonial">I owed $100,000 to the IRS but after one expensive dinner I was debt-free!</p>
+               <p class="testimonial-author">-Tad Senders</p>
+             </blockquote>
+
+             <blockquote>
+               <p class="testimonial">It's not the worst I've ever used.</p>
+               <p class="testimonial-author">-Niru Maheswaranathan</p>
+             </blockquote>
+
+             <blockquote>
+               <p class="testimonial">What is this?</p>
+               <p class="testimonial-author">-T.Y. Li</p>
+             </blockquote>
+
+           <h3>About the author</h3>
+           <p>Bet The Bill was designed by <a href="http://www.tedsanders.com/about">Ted</a> in California.</p>
          </div>
 
          <form class="form-horizontal" ng-hide="showForm">

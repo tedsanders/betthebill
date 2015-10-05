@@ -1,4 +1,4 @@
-html, body, div, span, h1, h2, p, a, em, img, small, strike, strong, sub, sup, tt, b, u, i, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, footer, header, hgroup, nav {margin:0;padding:0;border:0;font-size:100%; font:inherit;
+html, body, div, span, h1, h2, p, a, em, img, small, strike, strong, sub, sup, tt, b, u, i, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, footer, header, hgroup, nav, blockquote {margin:0;padding:0;border:0;font-size:100%; font:inherit;
 
   animation-name: fade-in;
 	-webkit-animation-name: fade-in;
@@ -203,6 +203,32 @@ input[type=number] {
 
 .pull-left{float:left}
 .pull-right{float:right}
+
+blockquote {
+  background: #eee;
+  border-left: 0.5rem solid #999;
+  quotes: "“" "“" "“" "“";
+  margin: 1rem auto;
+  padding-left: 0.5rem;
+  padding-right: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+}
+blockquote:before {
+  color: #999;
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+blockquote p {
+  display: inline;
+}
+.testimonial {font-style:italic}
+.testimonial-author {
+  float:right;
+}
 
 #resultcontainer {
   position:relative;
