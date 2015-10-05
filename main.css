@@ -225,10 +225,8 @@ blockquote:before {
 blockquote p {
   display: inline;
 }
-.testimonial {font-style:italic}
-.testimonial-author {
-  float:right;
-}
+.testimonial {margin:0;font-style:italic}
+.testimonial-author {margin-top:1rem;margin-bottom:0;float:right;}
 
 #resultcontainer {
   position:relative;
