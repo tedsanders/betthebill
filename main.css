@@ -204,6 +204,31 @@ input[type=number] {
 .pull-left{float:left}
 .pull-right{float:right}
 
+#resultcontainer {
+  position:relative;
+}
+
+#placeholderresult {
+position: absolute;
+top:0;
+left:0;
+width:100%;
+
+  opacity:0;
+  font-size: 1.5rem;
+  text-align:center;
+  margin: 0 auto;
+
+  animation-name: fade-out-after-spin;
+  -webkit-animation-name: fade-out-after-spin;
+
+  animation-duration: 5.25s;
+  -webkit-animation-duration: 5.25s;
+
+  animation-timing-function: ease-in-out;
+  -webkit-animation-timing-function: ease-in-out;
+}
+
 #result {
 font-size: 1.5rem;
 text-align:center;
@@ -285,6 +310,17 @@ svg {
     0% {opacity: 0}
     95% {opacity: 0}
     100% {opacity: 1}
+}
+
+@-webkit-keyframes fade-out-after-spin {
+    0% {opacity: 1}
+    95% {opacity: 1}
+    100% {opacity: 0}
+}
+@keyframes fade-out-after-spin {
+    0% {opacity: 1}
+    95% {opacity: 1}
+    100% {opacity: 0}
 }
 
 .animate-add{

@@ -44,8 +44,13 @@
          <!-- Experimental Pie Chart Works -->
          <div id="pie-chart" ng-show="showPie"><div id="arrow"></div></div>
 
-         <div id="result" ng-show="showResult">
-           <p>{{ loser.name }}, who owed {{ loser.amount | currency }}, must pay the total of {{ total() | currency}}</p>
+         <div id="resultcontainer">
+           <div id="placeholderresult" ng-show="showResult">
+             <p>???</p>
+           </div>
+           <div id="result" ng-show="showResult">
+             <p>{{ loser.name }}, who owed {{ loser.amount | currency }}, must pay the total of {{ total() | currency}}</p>
+           </div>
          </div>
 
          <div ng-show="showAbout">
