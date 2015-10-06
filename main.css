@@ -144,7 +144,6 @@ border-color: #d43f3a;
 width: 2.5rem;
 
 font-size:2rem;
-/*float:right; /*shouldn't matter but fixes alignment/table-sizing bug?*/
 }
 
 .table-cell {display:table-cell;}

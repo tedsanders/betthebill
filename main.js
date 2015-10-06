@@ -37,7 +37,7 @@ function DinerCtrl($scope) {
 		 'id': $scope.nextDiner
       });
       $scope.nextDiner++;
-			$scope.updateChart()
+			$scope.updateChart();
 
 	  if(1 < $scope.diners.length) $scope.disableRemoveDiner = false;
    }
@@ -77,6 +77,7 @@ function DinerCtrl($scope) {
 			$scope.showForm = true;
 			$scope.showResult = false;
 			document.getElementById("about").innerHTML = "(What is Bet the Bill?)";
+			$scope.updateChart();//bug on mobile where sometimes this wasn't showing up after switching back. not sure why. hopefully this fixes it.
 		}
 	}
 
