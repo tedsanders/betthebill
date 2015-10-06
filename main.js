@@ -77,7 +77,6 @@ function DinerCtrl($scope) {
 			$scope.showForm = true;
 			$scope.showResult = false;
 			document.getElementById("about").innerHTML = "(What is Bet the Bill?)";
-			$scope.updateChart();//bug on mobile where sometimes this wasn't showing up after switching back. not sure why. hopefully this fixes it.
 		}
 	}
 
