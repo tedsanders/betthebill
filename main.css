@@ -1,4 +1,29 @@
-html, body, div, span, h1, h2, p, a, em, img, small, strike, strong, sub, sup, tt, b, u, i, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, footer, header, hgroup, nav, blockquote {margin:0;padding:0;border:0;font-size:100%; font:inherit;
+/*
+
+CSS is organized into seven main sections.
+(1) Global settings (mostly css reset)
+(2) General layout
+(3) Text styling
+(4) Inputs (layout + styling)
+(5) Buttons (layout + styling)
+(6) Pie chart
+(7) Animations
+
+Obviously many elements have both layout and styling, but some attributes have been separated to make it easier to change one without the other getting in the way. The downside of this is that instances are not unique: e.g., if you see 'h3' in one section, there still might be other rules for 'h3' in another section.
+
+Within each section, attributes are loosely organized by importance, a subjective standard basically set by how soon the user encounters them (so big to small, top to bottom, front page to last page).
+
+*/
+
+
+/* Global settings for css reset and silky smooth loading animations */
+
+html, body, div, span, h1, h2, p, a, em, img, small, strike, strong, sub, sup, tt, b, u, i, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, footer, header, hgroup, nav, blockquote {
+  margin:0 auto;
+  padding:0;
+  border:0;
+  font-size:100%;
+  font:inherit;
 
   animation-name: fade-in;
 	-webkit-animation-name: fade-in;
@@ -8,18 +33,15 @@ html, body, div, span, h1, h2, p, a, em, img, small, strike, strong, sub, sup, t
 
 	animation-timing-function: ease-in-out;
 	-webkit-animation-timing-function: ease-in-out;
-
-}
-p {margin: 1rem 0;}
-h3 {margin: 1rem auto;text-align:center;}
-
-body {
-  overflow-x:none;
 }
 
-body, button, input {
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size: 1rem;
+
+/* Layout */
+
+#page-container {
+  padding: 0 0.5em;
+  max-width: 32em;
+  margin: 0 auto;
 }
 
 header {
@@ -27,38 +49,8 @@ header {
   margin-bottom: 1rem;
 }
 
-h1 {
-  font-size: 2rem;
-  text-align:center;
-  margin: 0 auto;
-}
-
-#aboutaa {
-  margin: 0 auto;
-  position:absolute;
-  right: 0;
-  bottom: 0.5rem;
-  font-size: 1rem;
-}
-
 #about-container {
   text-align:center;
-}
-
-#total {
-  padding-right: 0.5em;
-  float:right;
-  font-size:1.25rem;
-}
-
-a {
-  margin: 0 auto;
-  color: blue;
-  text-decoration:none;
-}
-
-a:hover {
-  text-decoration:underline;
 }
 
 table {
@@ -67,182 +59,43 @@ table {
   width: 100%;
 }
 
+tr {width:100%;}
+
 td, th {
   padding: 0.4em;
-  /*border: 1px solid black;/**/
   vertical-align: middle;
 }
 
-tr {width:100%;}
-
 .diner-column {width:50%;}
 
-input, input:valid {
-font-size:1.25rem;
-display: block;
-width: 100%;
-height: 2em;
-padding: 0 0.5em;
-line-height: 1;
-color: #000;
-background-color: #fff;
-border: 1px solid #ccc;
-border-radius: 0.25em;
--webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
--webkit-transition: border-color ease-in-out .1s,-webkit-box-shadow ease-in-out .1s;
--o-transition: border-color ease-in-out .1s,box-shadow ease-in-out .1s;
-transition: border-color ease-in-out .1s,box-shadow ease-in-out .1s;
-box-sizing: border-box;
-
-text-align:right;
-outline:none;
-
-padding-top:1px;
+#total {
+  padding-right: 0.5em;
+  float:right;
+  font-size:1.25rem;
 }
 
-input:invalid {
-  background-color:#faa;
+#go-back-container {
+  padding: 0 0.4rem;
 }
 
-input:focus {
-  border-color: #66afe9;
-  outline: 0;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
-          box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+h3 {
+  margin: 1rem auto;
+  text-align:center;
 }
 
-button {
-font-size:1.25rem;
-  display:inline-block;
-  -webkit-appearance:button;
-  margin: 0;
-  color:white;
-  height: 2.5rem;
-  width: 100%;
-
-  padding-top:1px;
-
-text-align: center;
-white-space: nowrap;
-/*vertical-align: middle;*/
-cursor: pointer;
--webkit-user-select: none;
--moz-user-select: none;
--ms-user-select: none;
-user-select: none;
-background-image: none;
-border: 1px solid transparent;
-border-radius: 0.25em;
+p {
+  margin: 1rem auto;
 }
-
-button:focus, a:focus {outline:0;} /*removes chrome accessibility feature*/
-
-.remove-diner {
-background-color: #d9534f;
-border-color: #d43f3a;
-width: 2.5rem;
-
-font-size:2rem;
-}
-
-.table-cell {display:table-cell;}
-
-.remove-diner:hover,.remove-diner:focus,.remove-diner:active {
-  background-color: #c9302c;
-  border-color: #ac2925;
-}
-
-#add-diner {
-background-color: #5bc0de;
-border-color: #46b8da;
-}
-
-#add-diner:hover,#add-diner:focus,#add-diner:active {
-  background-color: #31b0d5;
-  border-color: #269abc;
-}
-
-#bet-the-bill {
-background-color: #5cb85c;
-border-color: #4cae4c;
-margin-bottom:0.4rem;
-}
-
-#bet-the-bill:hover,#bet-the-bill:focus,#bet-the-bill:active {
-  background-color: #449d44;
-  border-color: #398439;
-}
-
-#go-back {
-background-color: #999;
-border-color: #888;
-margin: 1rem 0;
-}
-
-#go-back:hover,#go-back:focus,#go-back:active {
-  background-color: #888;
-}
-
-#go-back-container {padding: 0 0.4rem;}
-
-#container {
-  padding: 0 0.5em;
-  max-width: 32em;
-  margin: 0 auto;
-  }
-
-/*form validation*/
-input.ng-invalid.ng-dirty {
-		border: 1px solid #FA787E;
-}
-
-input[type=number]::-webkit-outer-spin-button,
-input[type=number]::-webkit-inner-spin-button {
-    /*display: none;*/
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-input[type=number] {
-    -moz-appearance:textfield;
-}
-
-.pull-left{float:left}
-.pull-right{float:right}
-
-blockquote {
-  background: #eee;
-  border-left: 0.5em solid #999;
-  quotes: "“" "“" "“" "“";
-  margin: 1em auto;
-  padding-left: 0.5em;
-  padding-right: 1em;
-  padding-top: 1em;
-  padding-bottom: 1em;
-  border-radius:0.25em;
-}
-blockquote:before {
-  color: #999;
-  content: open-quote;
-  font-size: 4em;
-  line-height: 0.1em;
-  margin-right: 0.25em;
-  vertical-align: -0.4em;
-}
-
-.testimonial {margin:0;font-style:italic;display:inline}
-.testimonial-author {margin-top:1rem;margin-bottom:0;float:right;}
 
 #resultcontainer {
   position:relative;
 }
 
 #placeholderresult {
-position: absolute;
-top:0;
-left:0;
-width:100%;
+  position: absolute;
+  top:0;
+  left:0;
+  width:100%;
 
   opacity:0;
   font-size: 1.5rem;
@@ -274,9 +127,179 @@ animation-timing-function: ease-in-out;
 -webkit-animation-timing-function: ease-in-out;
 }
 
-/******************
-** PIE CHART CSS **
-******************/
+
+/* Text styling */
+body, button, input {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 1rem;
+}
+
+h1 {
+  font-size: 2rem;
+  text-align:center;
+  margin: 0 auto;
+}
+
+a {
+  margin: 0 auto;
+  color: blue;
+  text-decoration:none;
+}
+
+a:hover {
+  text-decoration:underline;
+}
+
+blockquote {
+  background: #eee;
+  border-left: 0.5em solid #999;
+  quotes: "“" "“" "“" "“";
+  margin: 1em auto;
+  padding-left: 0.5em;
+  padding-right: 1em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  border-radius:0.25em;
+}
+blockquote:before {
+  color: #999;
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+.testimonial {margin:0;font-style:italic;display:inline}
+.testimonial-author {margin-top:1rem;margin-bottom:0;float:right;}
+
+
+/* Input fields */
+
+input, input:valid {
+  font-size:1.25rem;
+  display: block;
+  width: 100%;
+  height: 2em;
+  padding: 0 0.5em;
+  line-height: 1;
+  color: #000;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 0.25em;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  -webkit-transition: border-color ease-in-out .1s,-webkit-box-shadow ease-in-out .1s;
+  -o-transition: border-color ease-in-out .1s,box-shadow ease-in-out .1s;
+  transition: border-color ease-in-out .1s,box-shadow ease-in-out .1s;
+  box-sizing: border-box;
+
+  text-align:right;
+  outline:none;
+
+  padding-top:1px;
+}
+
+input:invalid {
+  background-color:#faa;
+}
+
+input:focus {
+  border-color: #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+          box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+}
+
+/*form validation*/
+input.ng-invalid.ng-dirty {
+		border: 1px solid #FA787E;
+}
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    /*display: none;*/
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
+}
+
+
+/* Buttons */
+
+button {
+  font-size:1.25rem;
+  display:inline-block;
+  -webkit-appearance:button;
+  margin: 0;
+  color:white;
+  height: 2.5rem;
+  width: 100%;
+
+  padding-top:1px;
+
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 0.25em;
+}
+
+button:focus, a:focus {outline:0;} /*removes chrome accessibility feature*/
+
+.remove-diner {
+  background-color: #d9534f;
+  border-color: #d43f3a;
+  width: 2.5rem;
+  font-size:2rem;
+}
+
+.remove-diner:hover,.remove-diner:focus,.remove-diner:active {
+  background-color: #c9302c;
+  border-color: #ac2925;
+}
+
+#add-diner {
+  background-color: #5bc0de;
+  border-color: #46b8da;
+}
+
+#add-diner:hover,#add-diner:focus,#add-diner:active {
+  background-color: #31b0d5;
+  border-color: #269abc;
+}
+
+#bet-the-bill {
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+  margin-bottom:0.4rem;
+}
+
+#bet-the-bill:hover,#bet-the-bill:focus,#bet-the-bill:active {
+  background-color: #449d44;
+  border-color: #398439;
+}
+
+#go-back {
+  background-color: #999;
+  border-color: #888;
+  margin: 1rem 0;
+}
+
+#go-back:hover,#go-back:focus,#go-back:active {
+  background-color: #888;
+}
+
+
+/*Pie chart*/
 
 svg {
     pointer-events:none; /*so that buttons are not covered*/
@@ -299,7 +322,6 @@ svg {
     transform: translateX(-32px);
     z-index:2;
 
-
     width: 0;
     height: 0;
     border-left: 32px solid transparent;
@@ -307,20 +329,12 @@ svg {
     border-top:32px solid black;
 }
 
-/************************/
-
-.animate-row{
-	animation-name: fade-in;
-	-webkit-animation-name: fade-in;
-
-	animation-duration: 0.25s;
-	-webkit-animation-duration: 0.25s;
-
-	animation-timing-function: ease-in-out;
-	-webkit-animation-timing-function: ease-in-out;
-
-	visibility: visible !important;
+/*This keeps the spinning pie chart from triggering horizontal scroll bars in case the corners of its rectangular container go outside the page*/
+body {
+  overflow-x:none;
 }
+
+/*Animation definitions*/
 
 @-webkit-keyframes fade-in {
     from {opacity: 0}
