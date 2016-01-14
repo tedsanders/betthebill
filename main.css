@@ -350,8 +350,14 @@ body {
     }
 }
 @keyframes fade-in {
-    from {opacity: 0}
-    to {opacity: 1}
+    /*from {opacity: 0}
+    to {opacity: 1}*/
+    from {
+        -webkit-transform:scaleY(1); /* Safari and Chrome */
+    }
+    to {
+        -webkit-transform:scaleY(0); /* Safari and Chrome */
+    }
 }
 
 @-webkit-keyframes fade-in-after-spin {
