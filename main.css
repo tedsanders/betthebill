@@ -382,7 +382,7 @@ body {
     100% {opacity: 0}
 }
 
-ng-hide {
+.ng-hide {
 	transform-:scaleY(0);
 	webkit-transform:scaleY(0);
     
