@@ -33,6 +33,9 @@ html, body, div, span, h1, h2, p, a, em, img, small, strike, strong, sub, sup, t
 
 	animation-timing-function: ease-in-out;
 	-webkit-animation-timing-function: ease-in-out;
+	
+	transform-origin-y: 100%;
+	-webkit-transform-origin-y: 100%;
 }
 
 
@@ -337,8 +340,14 @@ body {
 /*Animation definitions*/
 
 @-webkit-keyframes fade-in {
-    from {opacity: 0}
-    to {opacity: 1}
+    /*from {opacity: 0}
+    to {opacity: 1}*/
+    from {
+        -webkit-transform:scaleY(1); /* Safari and Chrome */
+    }
+    to {
+        -webkit-transform:scaleY(0); /* Safari and Chrome */
+    }
 }
 @keyframes fade-in {
     from {opacity: 0}
