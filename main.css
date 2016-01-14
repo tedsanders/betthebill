@@ -34,8 +34,8 @@ html, body, div, span, h1, h2, p, a, em, img, small, strike, strong, sub, sup, t
 	animation-timing-function: ease-in-out;
 	-webkit-animation-timing-function: ease-in-out;
 	
-	transform-origin-y: 100%;
-	-webkit-transform-origin-y: 100%;
+	transform-origin-y: 0%;
+	-webkit-transform-origin-y: 0%;
 }
 
 
