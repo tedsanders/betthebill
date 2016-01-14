@@ -33,9 +33,6 @@ html, body, div, span, h1, h2, p, a, em, img, small, strike, strong, sub, sup, t
 
 	animation-timing-function: ease-in-out;
 	-webkit-animation-timing-function: ease-in-out;
-	
-	transform-origin-y: 0%;
-	-webkit-transform-origin-y: 0%;
 }
 
 
@@ -340,24 +337,12 @@ body {
 /*Animation definitions*/
 
 @-webkit-keyframes fade-in {
-    /*from {opacity: 0}
-    to {opacity: 1}*/
-    from {
-        -webkit-transform:scaleY(0); /* Safari and Chrome */
-    }
-    to {
-        -webkit-transform:scaleY(1); /* Safari and Chrome */
-    }
+    from {opacity: 0}
+    to {opacity: 1}
 }
 @keyframes fade-in {
-    /*from {opacity: 0}
-    to {opacity: 1}*/
-    from {
-        -webkit-transform:scaleY(0); /* Safari and Chrome */
-    }
-    to {
-        -webkit-transform:scaleY(1); /* Safari and Chrome */
-    }
+    from {opacity: 0}
+    to {opacity: 1}
 }
 
 @-webkit-keyframes fade-in-after-spin {
@@ -380,10 +365,4 @@ body {
     0% {opacity: 1}
     95% {opacity: 1}
     100% {opacity: 0}
-}
-
-.ng-hide {
-	transform-:scaleY(0);
-	webkit-transform:scaleY(0);
-    
 }
