@@ -1,3 +1,40 @@
+/* entire container, keeps perspective */
+#page-container {
+	perspective: 1000;
+}
+
+/* flip speed goes here */
+#flipper {
+	transition: 0.6s;
+	transform-style: preserve-3d;
+	position: relative;
+}
+
+/* hide back of pane during swap */
+#front, #back {
+	backface-visibility: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+/* front pane, placed above back */
+#front {
+	z-index: 2;
+	/* for firefox 31 */
+	transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+#back {
+	transform: rotateY(180deg);
+}
+
+.flip {transform: rotateY(180deg);}
+
+
+
+
 /*
 
 CSS is organized into seven main sections.
@@ -35,6 +72,9 @@ html, body, div, span, h1, h2, p, a, em, img, small, strike, strong, sub, sup, t
 	-webkit-animation-timing-function: ease-in-out;
 }
 
+/* When scrollbars appear, centered content will shift to the side. The trick below prevents that from happening.*/
+html {margin-left: calc(100vw - 100%);}
+
 
 /* Layout */
 
@@ -54,24 +94,33 @@ header {
 }
 
 table {
-  table-layout:auto;
+  table-layout: fixed;
   border-collapse: collapse;
   width: 100%;
 }
 
-tr {width:100%;}
+tr {
+  width: 100%;
+}
 
 td, th {
   padding: 0.4em;
   vertical-align: middle;
 }
 
-.diner-column {width:50%;}
+.remove-diner-column {width: 2.5rem}
+
+/*if there's plenty of room, this splits the two main columns down the center of the page*/
+@media all and (min-width: 27rem) {
+.diner-column {width: 50%}
+}
+
 
 #total {
   padding-right: 0.5em;
   float:right;
   font-size:1.25rem;
+  text-overflow: ellipsis;
 }
 
 #go-back-container {

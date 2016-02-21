@@ -4,7 +4,7 @@ function DinerCtrl($scope) {
 
 	 // d3 colors
 	 //var getcolor = d3.scale.category10()
-	 var getcolor = ["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd", "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"]
+	 var getcolor = ["#1f77b4", "#2ca02c", "#ff7f0e", "#d62728", "#9467bd", "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"]
 
    // Initialize
    $scope.showResult = false;
@@ -65,18 +65,21 @@ function DinerCtrl($scope) {
 	$scope.swapAbout = function() {
 		if(false === $scope.showAbout) {
 			$scope.showAbout = true;
-			$scope.showPie = false;
-			$scope.showForm = false;
-			$scope.showResult = false;
+			//$scope.showPie = false;
+			//$scope.showForm = false;
+			//$scope.showResult = false;
 			document.getElementById("about").innerHTML = "Home";
+			document.getElementById("flipper").classList.toggle("flip");
 		}
 
 		else{
-			$scope.showAbout = false;
-			$scope.showPie = true;
-			$scope.showForm = true;
-			$scope.showResult = false;
+			setTimeout( function() {$scope.showAbout = false;},1);
+			//$scope.showPie = true;
+			//$scope.showForm = true;
+			//$scope.showResult = false;
 			document.getElementById("about").innerHTML = "(What is Bet the Bill?)";
+			document.getElementById("flipper").classList.toggle("flip");
+			$scope.updateChart();
 		}
 	}
 
@@ -87,6 +90,7 @@ function DinerCtrl($scope) {
 		$scope.showPie = true;
 		$scope.showAbout = false;
 		document.getElementById("about").innerHTML = "(What is Bet the Bill?)";
+		$scope.updateChart();
 	}
 
    $scope.betBill = function() {
@@ -271,8 +275,8 @@ function DinerCtrl($scope) {
 				.attr("text-anchor", "middle")
 				.attr("dominant-baseline", "central")
 				.text(function(d, i) {return $scope.diners[i].name; })
-				.attr("style", function(d) {
-												if(d.data > 0 ) { return "font-size: " + width/12 + "px;"}
+				.attr("style", function(d, i) {
+												if(d.data > 0 ) { return "font-size: " + width/Math.max(10,1.4*$scope.diners[i].name.length) + "px;"}
 												else { return "font-size: 0;"};});
 
 				//pieLabel.text(data.label);

@@ -1,4 +1,4 @@
-<!--Welcome to the source behind Bet The Bill. This was a labor of love and I hope you enjoy it!-->
+<!--Welcome to the source of Bet The Bill. This project was a labor of love and I hope you enjoy it!-->
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -20,25 +20,29 @@
    <body ng-app="bet-the-bill">
      <div id="page-container"  ng-controller="DinerCtrl">
 
+
         <header>
             <h1>Bet the Bill</h1>
             <h2 id="about-container"><a href="" ng-click="swapAbout()" tabindex="-1" id="about">(What is Bet the Bill?)</a></h2>
         </header>
 
+  <div id="flipper">
+    <div id="front">
+
         <!-- The inputs and buttons for Bet the Bill-->
         <form ng-show="showForm">
          <table>
            <tr ng-repeat="diner in diners">
-             <td class="diner-column"><input class="diner-name" type="text" ng-model="diner.name" ng-change="updateChart()" onclick="this.setSelectionRange(0,this.value.length)"><!--Looks weird, but it's actually the best solution to a Mobile Safari bug that's been around for years--></td>
+             <td class="diner-column"><input class="diner-name" type="text" ng-model="diner.name" ng-change="updateChart()" onclick="this.setSelectionRange(0,this.value.length)"><!--Looks weird, I know, but it's actually the best solution to a Mobile Safari bug that Apple hasn't fixed for years--></td>
              <td><input class="diner-amount" type="number" step="any" min="0" smart-float ng-model="diner.amount" ng-change="updateChart()" onclick="
                if(/iPad|iPhone|iPod/.test(navigator.platform)) {this.setSelectionRange(0,this.value.length)}
                else {this.select()}
-               "><!--Looks weird, but solves Mobile Safari bug. Solution is different than text input because Chrome treats number inputs differently.--></td>
-             <th><button class="remove-diner" ng-click="removeDiner($index)" type="button" ng-disabled="disableRemoveDiner" tabindex="-1">&times;</button></th>
+               "><!--Looks weird, I know, but solves Mobile Safari bug. Solution is different than for text input because Chrome treats number inputs differently.--></td>
+             <th class="remove-diner-column"><button class="remove-diner" ng-click="removeDiner($index)" type="button" ng-disabled="disableRemoveDiner" tabindex="-1">&times;</button></th>
            </tr>
            <tr>
              <th><button id="add-diner" ng-click="addDiner()" type="button">Add Diner</button></th>
-             <td><span id="total">Total:&nbsp;&nbsp;{{ total() | currency }}</span></td>
+             <td><span id="total">Total:&nbsp;{{ total() | currency }}</span></td>
            </tr>
            <tr>
              <th colspan="3"><button id="bet-the-bill" ng-click="betBill()" type="button">Bet the Bill!</button></th>
@@ -59,64 +63,7 @@
            </div>
          </div>
 
-         <!-- This is the about text that gets swapped in after clicking 'What is Bet the Bill?' -->
-         <div ng-show="showAbout">
-           <p>Bet the Bill is an easy, 100% fair way to split your restaurant bill.</p>
 
-           <p>Splitting restaurant bills is often a hassle, especially if you want to be fair. Either you choose to annoy your server with a line-item split request, you choose to dig for ones and quarters and pennies, or you choose to coordinate payments among Venmo or Snapcash or whatever patchily adopted app is hot at the time.</p>
-
-           <p>Now there's a better way to pay: Bet the Bill.</p>
-
-           <p>To use Bet The Bill, just type in the cost of each person’s meal and then tap ‘Bet the Bill!’ The app will randomly choose someone to pay the entire bill so you can all get on with your lives, hassle-free.</p>
-
-           <p>Your odds of paying scale with your meal's cost, so whether you got the Caesar salad for six dollars or the sirloin steak for seventeen, Bet the Bill is 100% fair.</p>
-
-           <h3>Frequently Asked Questions:</h3>
-
-           <h4>What exactly do you mean by fair?</h4>
-           <p>On average, you'll pay the cost of your meal. For example, if your meal cost $20 out of your party's $100 bill, then when you Bet the Bill you'll pay for everything 20% of the time on average (and 20% * $100 = $20).</p>
-
-           <h4>Will my luck balance out in the long run?</h4>
-           <p>No. The more often you bet, the more you stand to lose.</p>
-
-           <h4>Can I trust Bet the Bill?</h4>
-           <p>Yes. Bet the Bill an open-source application that runs locally on your device. View the source code yourself on <a href="https://github.com/tedsanders/BetTheBill/tree/gh-pages">GitHub</a> and you'll see that fairness is guaranteed within the limits of IEEE 754 floating point precision and whatever psuedo-random number generator is behind JavaScript's math.random() method.</p>
-
-           <h4>How should we handle tax and tip?</h4>
-           <p>You don't even need to! As long as you agree that people should pay tax and tip proportional to the cost of their meal, then computing tax and tip is unnecessary, because it won't change each person's odds of paying.</p>
-
-           <h4>Can I use this for debts besides restaurant bills?</h4>
-           <p>Yep!</p>
-
-           <h4>Is there an app version of Bet the Bill?</h4>
-           <p>App versions are in the works, but in the meantime, you can always <a href="http://www.howtogeek.com/196087/how-to-add-websites-to-the-home-screen-on-any-smartphone-or-tablet/">create a shortcut</a>. (The app versions are basically 99% done, but I can't figure out why the wheel won't animate. Stay tuned.)</p>
-
-           <h3>Testimonials</h3>
-             <blockquote>
-               <p class="testimonial">Paradigm-shifting. Path-breaking. Edge-cutting. Bet the Bill changes what it means to be human.</p>
-               <p class="testimonial-author">-Ted Schmanders</p><div style="clear:both"></div>
-             </blockquote>
-
-             <blockquote>
-               <p class="testimonial">This app is amazing. It's definitely going viral.</p>
-               <p class="testimonial-author">-Cameron S., immediately after winning a free dinner</p><div style="clear:both"></div>
-             </blockquote>
-
-             <blockquote>
-               <p class="testimonial">It's not the worst app I've ever used.</p>
-               <p class="testimonial-author">-Niru Maheswaranathan</p><div style="clear:both"></div>
-             </blockquote>
-
-             <blockquote>
-               <p class="testimonial">What is this?</p>
-               <p class="testimonial-author">-Tony Y. Li</p><div style="clear:both"></div>
-             </blockquote>
-
-             <p>Email Ted with your testimonial and he'll put it here!</p>
-
-           <h3>About the author</h3>
-           <p>Bet The Bill was designed by <a href="http://www.tedsanders.com/about">Ted</a> in California.</p>
-         </div>
 
          <!-- The Go Back button that appears on the results and about page -->
          <form class="form-horizontal" ng-hide="showForm">
@@ -124,6 +71,71 @@
            <button ng-click="goBack()" ng-disabled="disableBackButton" type="button" id="go-back">Go Back</button>
           </div>
          </form>
+
+  </div>
+  <div id="back">
+    <!-- This is the about text that gets swapped in after clicking 'What is Bet the Bill?' -->
+    <div ng-show="showAbout">
+      <p>Bet the Bill is an easy, 100% fair way to split your restaurant bill.</p>
+
+      <p>Splitting restaurant bills is often a hassle, especially if you want to be fair. Either you choose to annoy your server with a line-item split request, you choose to dig for ones and quarters and pennies, or you choose to coordinate payments among Venmo or Snapcash or whatever patchily adopted app is hot at the time.</p>
+
+      <p>Now there's a better way to pay: Bet the Bill.</p>
+
+      <p>To use Bet The Bill, just type in the cost of each person’s meal and then tap ‘Bet the Bill!’ The app will randomly choose someone to pay the entire bill so you can all get on with your lives, hassle-free.</p>
+
+      <p>Your odds of paying scale with your meal's cost, so whether you got the Caesar salad for six dollars or the sirloin steak for seventeen, Bet the Bill is 100% fair.</p>
+
+      <h3>Frequently Asked Questions:</h3>
+
+      <h4>What exactly do you mean by fair?</h4>
+      <p>On average, you'll pay the cost of your meal. For example, if your meal cost $20 out of your party's $100 bill, then when you Bet the Bill you'll pay for everything 20% of the time on average (and 20% * $100 = $20).</p>
+
+      <h4>Will my luck balance out in the long run?</h4>
+      <p>No. The more often you bet, the more you stand to lose.</p>
+
+      <h4>Can I trust Bet the Bill?</h4>
+      <p>Yes. Bet the Bill an open-source application that runs locally on your device. View the source code yourself on <a href="https://github.com/tedsanders/BetTheBill/tree/gh-pages">GitHub</a> and you'll see that fairness is guaranteed within the limits of IEEE 754 floating point precision and whatever psuedo-random number generator is behind JavaScript's math.random() method.</p>
+
+      <h4>How should we handle tax and tip?</h4>
+      <p>You don't even need to! As long as you agree that people should pay tax and tip proportional to the cost of their meal, then computing tax and tip is unnecessary, because it won't change each person's odds of paying.</p>
+
+      <h4>Can I use this for debts besides restaurant bills?</h4>
+      <p>Yep!</p>
+
+      <h4>Is there an app version of Bet the Bill?</h4>
+      <p>App versions are in the works, but in the meantime, you can always <a href="http://www.howtogeek.com/196087/how-to-add-websites-to-the-home-screen-on-any-smartphone-or-tablet/">create a shortcut</a>. (The app versions are basically 99% done, but I can't figure out why the wheel won't animate. Stay tuned.)</p>
+
+      <h3>Testimonials</h3>
+        <blockquote>
+          <p class="testimonial">Paradigm-shifting. Path-breaking. Edge-cutting. Bet the Bill changes what it means to be human.</p>
+          <p class="testimonial-author">-Ted Schmanders</p><div style="clear:both"></div>
+        </blockquote>
+
+        <blockquote>
+          <p class="testimonial">This app is amazing. It's definitely going viral.</p>
+          <p class="testimonial-author">-Cameron S., immediately after winning a free dinner</p><div style="clear:both"></div>
+        </blockquote>
+
+        <blockquote>
+          <p class="testimonial">It's not the worst app I've ever used.</p>
+          <p class="testimonial-author">-Niru Maheswaranathan</p><div style="clear:both"></div>
+        </blockquote>
+
+        <blockquote>
+          <p class="testimonial">What is this?</p>
+          <p class="testimonial-author">-Tony Y. Li</p><div style="clear:both"></div>
+        </blockquote>
+
+        <p>Email Ted with your testimonial and he'll put it here!</p>
+
+      <h3>About the author</h3>
+      <p>Bet The Bill was designed by <a href="http://www.tedsanders.com/about">Ted</a> in California.</p>
+    </div>
+  </div>
+ </div>
+
+
 
         </div>
 
