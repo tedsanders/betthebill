@@ -64,6 +64,7 @@ function DinerCtrl($scope) {
 		else{
 			$scope.showAbout = false;
 			setTimeout( function() {if($scope.showAbout==false){document.getElementById("about-text").classList.add("ng-hide");};},600);
+			setTimeout( function() {scroll(0,0);},300);
 			document.getElementById("about-link").innerHTML = "(What is Bet the Bill?)";
 			document.getElementById("content-container").classList.toggle("flip");
 			$scope.updateChart();

@@ -24,22 +24,12 @@ html, body, div, span, h1, h2, p, a, em, img, small, strike, strong, sub, sup, t
   border:0;
   font-size:100%;
   font:inherit;
-
-  animation-name: fade-in;
-	-webkit-animation-name: fade-in;
-
-	animation-duration: 0.25s;
-	-webkit-animation-duration: 0.25s;
-
-	animation-timing-function: ease-in-out;
-	-webkit-animation-timing-function: ease-in-out;
 }
+
+/* Layout */
 
 /* When scrollbars appear, centered content will shift to the side. The trick below prevents that from happening.*/
 html {margin-left: calc(100vw - 100%);}
-
-
-/* Layout */
 
 #page-container {
   padding: 0 0.5em;
@@ -379,6 +369,18 @@ body {
     100% {opacity: 0}
 }
 
+/*PAGE FADE IN*/
+html {
+animation-name: fade-in;
+-webkit-animation-name: fade-in;
+
+animation-duration: 0.6s;
+-webkit-animation-duration: 0.6s;
+
+animation-timing-function: ease-in-out;
+-webkit-animation-timing-function: ease-in-out;}
+
+
 /*FLIP ANIMATION SECTION*/
 /* entire container, keeps perspective */
 #page-container {
@@ -413,3 +415,21 @@ body {
 }
 
 .flip {transform: rotateY(180deg);}
+
+/* inflate row animation
+tr:nth-last-of-type(3) {
+  -webkit-animation-name: inflate;
+  -webkit-animation-duration: 0.25s;
+  -webkit-animation-timing-function: ease-in;
+
+  -webkit-transform-origin-y: 0%;
+}
+
+@-webkit-keyframes inflate {
+  from {
+    -webkit-transform:scaleY(0);
+  }
+  to {
+    -webkit-transform:scaleY(1);
+  }
+}*/
