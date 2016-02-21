@@ -57,16 +57,16 @@ function DinerCtrl($scope) {
 	$scope.swapAbout = function() {
 		if(false == $scope.showAbout) {
 			$scope.showAbout = true;
+			document.getElementById("content-container").classList.toggle("flip");
 			document.getElementById("about-text").classList.remove("ng-hide");
 			document.getElementById("about-link").innerHTML = "(Back to Bet the Bill)";
-			document.getElementById("content-container").classList.toggle("flip");
 		}
 		else{
 			$scope.showAbout = false;
-			setTimeout( function() {if($scope.showAbout==false){document.getElementById("about-text").classList.add("ng-hide");};},600);
-			setTimeout( function() {scroll(0,0);},300);
-			document.getElementById("about-link").innerHTML = "(What is Bet the Bill?)";
-			document.getElementById("content-container").classList.toggle("flip");
+      setTimeout( function() {scroll(0,0);},290);
+      setTimeout( function() {if($scope.showAbout==false){document.getElementById("about-text").classList.add("ng-hide");};},600);
+      document.getElementById("content-container").classList.toggle("flip");
+      document.getElementById("about-link").innerHTML = "(What is Bet the Bill?)";
 			$scope.updateChart();
 		}
 	}

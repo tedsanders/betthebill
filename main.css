@@ -370,7 +370,7 @@ body {
 }
 
 /*PAGE FADE IN*/
-html {
+html, tr {
 animation-name: fade-in;
 -webkit-animation-name: fade-in;
 
