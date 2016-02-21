@@ -397,6 +397,7 @@ animation-timing-function: ease-in-out;
 /* hide back of pane during swap */
 #front-page, #back-page {
 	backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 	position: absolute;
 	top: 0;
 	left: 0;
