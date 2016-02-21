@@ -1,35 +1,28 @@
 var app = angular.module('bet-the-bill', []);
-
 function DinerCtrl($scope) {
 
-	 // d3 colors
-	 //var getcolor = d3.scale.category10()
-	 var getcolor = ["#1f77b4", "#2ca02c", "#ff7f0e", "#d62728", "#9467bd", "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"]
-
-   // Initialize
+   // Initialize everything
    $scope.showResult = false;
-	 $scope.showAbout = false;
+	 $scope.showForm = true;
 	 $scope.showPie = true;
-   $scope.diners = [{
-      'name': 'Diner 1',
+	 $scope.showAbout = false;
+   $scope.diners = [
+		{ 'name': 'Diner 1',
       'amount': 1,
-	  'id': 1
-	}, {
-			'name': 'Diner 2',
+	  	'id': 1},
+		{	'name': 'Diner 2',
 			'amount': 1,
-		'id': 2
-	}, {
-		'name': 'Diner 3',
-		'amount': 1,
-	'id': 3
-	}];
+			'id': 2},
+		{	'name': 'Diner 3',
+			'amount': 1,
+			'id': 3}
+		];
    $scope.nextDiner = 4;
    $scope.total = 0;
-   $scope.showForm = true;
-   //$scope.disableBackButton = true;
    $scope.disableRemoveDiner = false;
    wheelposition = 0; //Initial wheel position for animation
 
+	 //called when the user clicks Add Diner button
    $scope.addDiner = function() {
       $scope.diners.push({
          'name': 'Diner ' + $scope.nextDiner,
@@ -38,11 +31,10 @@ function DinerCtrl($scope) {
       });
       $scope.nextDiner++;
 			$scope.updateChart();
-
 	  if(1 < $scope.diners.length) $scope.disableRemoveDiner = false;
    }
 
-   // compute the total amount
+   //computes the total bill
    $scope.total = function() {
       var t = 0;
       angular.forEach($scope.diners, function(d) {
@@ -51,34 +43,29 @@ function DinerCtrl($scope) {
       return parseFloat(t);
    }
 
-	$scope.removeDiner = function(idx) {
-
+	 //called when the user clicks the red X button next to a diner row
+	 $scope.removeDiner = function(idx) {
 		//If there are two diners left, disable the remove diner button so we can't go down to zero diners. Also, disabling the button should come before the removal to avoid race conditions, I think
 		//Also, I'm fine with have users playing BetTheBill solitaire. There's no reason to do it, but no real reason to forbid it either. "That government is best which governs least."
 		if(2 == $scope.diners.length) $scope.disableRemoveDiner = true;
-
 		//Remove the diner and update the chart
      	$scope.diners.splice(idx, 1);
 			$scope.updateChart()
    }
 
+	//This function swaps the main page and the about page. It may look odd that I'm manually editing ng-hide, but I couldn't get angular to work with a delay
 	$scope.swapAbout = function() {
-		if(false === $scope.showAbout) {
+		if(false == $scope.showAbout) {
 			$scope.showAbout = true;
-			//$scope.showPie = false;
-			//$scope.showForm = false;
-			//$scope.showResult = false;
-			document.getElementById("about").innerHTML = "Home";
-			document.getElementById("flipper").classList.toggle("flip");
+			document.getElementById("about-text").classList.remove("ng-hide");
+			document.getElementById("about-link").innerHTML = "(Back to Bet the Bill)";
+			document.getElementById("content-container").classList.toggle("flip");
 		}
-
 		else{
-			setTimeout( function() {$scope.showAbout = false;},1);
-			//$scope.showPie = true;
-			//$scope.showForm = true;
-			//$scope.showResult = false;
-			document.getElementById("about").innerHTML = "(What is Bet the Bill?)";
-			document.getElementById("flipper").classList.toggle("flip");
+			$scope.showAbout = false;
+			setTimeout( function() {if($scope.showAbout==false){document.getElementById("about-text").classList.add("ng-hide");};},600);
+			document.getElementById("about-link").innerHTML = "(What is Bet the Bill?)";
+			document.getElementById("content-container").classList.toggle("flip");
 			$scope.updateChart();
 		}
 	}
@@ -86,11 +73,6 @@ function DinerCtrl($scope) {
 	$scope.goBack = function() {
 		$scope.showForm = true;
 		$scope.showResult = false;
-		$scope.showNullResult = false;
-		$scope.showPie = true;
-		$scope.showAbout = false;
-		document.getElementById("about").innerHTML = "(What is Bet the Bill?)";
-		$scope.updateChart();
 	}
 
    $scope.betBill = function() {
@@ -120,7 +102,7 @@ function DinerCtrl($scope) {
 	         }
 	      }
 
-	      //This section animates the spinning wheel. P.S. If the total is 0, there will be a divide by zero error.
+	      //This section animates the spinning wheel.
 
 	      //First, it finds the svg element and calls it wheel. This is the thing that will spin.
 		  var wheel = document.querySelector('svg');
@@ -138,13 +120,6 @@ function DinerCtrl($scope) {
 	        'style', css
 	      );
 
-
-
-
-      /*}
-
-      //otherwise, if the total is 0:
-      if(0 == total) $scope.showNullResult = true;*/
 
    }
 
@@ -165,6 +140,11 @@ function DinerCtrl($scope) {
 
 
 	 // Initialize d3 plot
+
+	 // d3 colors
+	 //var getcolor = d3.scale.category10()
+	 var getcolor = ["#1f77b4", "#2ca02c", "#ff7f0e", "#d62728", "#9467bd", "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"]
+
 	var width = document.getElementById('pie-chart').offsetWidth,
 			r = width/2,
 			dur = 1000,           // duration, in milliseconds
