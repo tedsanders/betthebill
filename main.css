@@ -260,6 +260,7 @@ button {
 button:focus, a:focus {outline:0;} /*removes chrome accessibility feature*/
 
 .remove-diner {
+  font-size: 2rem;
   background-color: #d9534f;
   border-color: #d43f3a;
   width: 2.5rem;
