@@ -234,13 +234,13 @@ input[type=number] {
 
 button {
   font-size: 1.25rem;
-  line-height: 1.25rem;
   vertical-align: middle;
   display:inline-block;
   -webkit-appearance:button;
   margin: 0;
   color: white;
   height: 2.5rem;
+  line-height: 2.5rem;
   width: 100%;
 
   padding:1px;
@@ -264,7 +264,6 @@ button:focus, a:focus {outline:0;} /*removes chrome accessibility feature*/
   background-color: #d9534f;
   border-color: #d43f3a;
   width: 2.5rem;
-  vertical-align: top;
 }
 
 .remove-diner:hover,.remove-diner:focus,.remove-diner:active {
