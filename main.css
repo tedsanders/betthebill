@@ -264,6 +264,7 @@ button:focus, a:focus {outline:0;} /*removes chrome accessibility feature*/
   background-color: #d9534f;
   border-color: #d43f3a;
   width: 2.5rem;
+  vertical-align: top;
 }
 
 .remove-diner:hover,.remove-diner:focus,.remove-diner:active {
