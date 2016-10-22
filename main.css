@@ -255,7 +255,7 @@ button {
   position: relative;
 }
 
-button:focus, a:focus {outline:0;} /*removes chrome accessibility feature*/
+button:focus, a:focus {outline:0;} /*removes accessibility feature*/
 
 .remove-diner {
   font-size: 2rem;
@@ -264,17 +264,17 @@ button:focus, a:focus {outline:0;} /*removes chrome accessibility feature*/
   width: 2.5rem;
 }
 
-.remove-diner:hover,.remove-diner:focus,.remove-diner:active {
+.remove-diner:hover,.remove-diner:active {
   background-color: #c9302c;
   border-color: #ac2925;
 }
 
 .slash {
   position:absolute;
-  left:17px;
+  left:18px;
   top:7px;
   background: white;
-  width: 4px;
+  width: 2px;
   height: 24px;
   -webkit-transform: rotate(-45deg);
 	   -moz-transform: rotate(-45deg);
@@ -284,7 +284,7 @@ button:focus, a:focus {outline:0;} /*removes chrome accessibility feature*/
 
 .backslash {
   position:absolute;
-  left:17px;
+  left:18px;
   top:7px;
   background: white;
   width: 4px;
