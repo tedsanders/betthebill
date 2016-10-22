@@ -194,6 +194,7 @@ input, input:valid {
   -webkit-transition: border-color ease-in-out .1s,-webkit-box-shadow ease-in-out .1s;
   -o-transition: border-color ease-in-out .1s,box-shadow ease-in-out .1s;
   transition: border-color ease-in-out .1s,box-shadow ease-in-out .1s;
+  box-sizing: border-box;
 
   text-align:right;
   outline:none;
@@ -249,8 +250,10 @@ button {
   -ms-user-select: none;
   user-select: none;
   background-image: none;
-  border: 0 solid transparent;
+  border: 1px solid transparent;
   border-radius: 0.25rem;
+
+  position: relative;
 }
 
 button:focus, a:focus {outline:0;} /*removes chrome accessibility feature*/
