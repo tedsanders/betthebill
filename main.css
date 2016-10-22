@@ -264,7 +264,7 @@ button:focus, a:focus {outline:0;} /*removes accessibility feature*/
   width: 2.5rem;
 }
 
-.remove-diner:hover,.remove-diner:active {
+.remove-diner:hover,.remove-diner:focus,.remove-diner:active {
   background-color: #c9302c;
   border-color: #ac2925;
 }
@@ -287,7 +287,7 @@ button:focus, a:focus {outline:0;} /*removes accessibility feature*/
   left:18px;
   top:7px;
   background: white;
-  width: 4px;
+  width: 2px;
   height: 24px;
   -webkit-transform: rotate(45deg);
 	   -moz-transform: rotate(45deg);
