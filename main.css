@@ -251,6 +251,8 @@ button {
   background-image: none;
   border: 1px solid transparent;
   border-radius: 0.25rem;
+
+  position: relative;
 }
 
 button:focus, a:focus {outline:0;} /*removes chrome accessibility feature*/
@@ -265,6 +267,32 @@ button:focus, a:focus {outline:0;} /*removes chrome accessibility feature*/
 .remove-diner:hover,.remove-diner:focus,.remove-diner:active {
   background-color: #c9302c;
   border-color: #ac2925;
+}
+
+.slash {
+  position:absolute;
+  left:1.15rem;
+  top:0.5rem;
+  background: white;
+  width: 0.2rem;
+  height: 1.5rem;
+  -webkit-transform: rotate(-45deg);
+	   -moz-transform: rotate(-45deg);
+	     -o-transform: rotate(-45deg);
+  border-radius: 0.25rem;
+}
+
+.backslash {
+  position:absolute;
+  left:1.15rem;
+  top:0.5rem;
+  background: white;
+  width: 0.2rem;
+  height: 1.5rem;
+  -webkit-transform: rotate(45deg);
+	   -moz-transform: rotate(45deg);
+	     -o-transform: rotate(45deg);
+  border-radius: 0.25rem;
 }
 
 #add-diner {
