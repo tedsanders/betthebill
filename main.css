@@ -271,11 +271,11 @@ button:focus, a:focus {outline:0;} /*removes chrome accessibility feature*/
 
 .slash {
   position:absolute;
-  left: 18px;
-  top: 6px;
+  left:17px;
+  top:7px;
   background: white;
   width: 4px;
-  height: 28px;
+  height: 24px;
   -webkit-transform: rotate(-45deg);
 	   -moz-transform: rotate(-45deg);
 	     -o-transform: rotate(-45deg);
@@ -284,11 +284,11 @@ button:focus, a:focus {outline:0;} /*removes chrome accessibility feature*/
 
 .backslash {
   position:absolute;
-  left: 17px;
-  top: 10px;
+  left:17px;
+  top:7px;
   background: white;
   width: 4px;
-  height: 28px;
+  height: 24px;
   -webkit-transform: rotate(45deg);
 	   -moz-transform: rotate(45deg);
 	     -o-transform: rotate(45deg);
