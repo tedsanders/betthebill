@@ -60,7 +60,7 @@ td, th {
 .remove-diner-column {width: 2.5rem}
 
 /*if there's plenty of room, this splits the two main columns down the center of the page*/
-@media all and (min-width: 27rem) {
+@media all and (min-width: 24rem) {
 .diner-column {width: 50%}
 }
 
