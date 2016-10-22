@@ -235,6 +235,7 @@ input[type=number] {
 button {
   font-size: 1.25rem;
   display: inline-block;
+  vertical-align: middle;
   -webkit-appearance:button;
   margin: 0;
   color: white;
