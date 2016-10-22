@@ -194,7 +194,6 @@ input, input:valid {
   -webkit-transition: border-color ease-in-out .1s,-webkit-box-shadow ease-in-out .1s;
   -o-transition: border-color ease-in-out .1s,box-shadow ease-in-out .1s;
   transition: border-color ease-in-out .1s,box-shadow ease-in-out .1s;
-  box-sizing: border-box;
 
   text-align:right;
   outline:none;
@@ -234,16 +233,13 @@ input[type=number] {
 
 button {
   font-size: 1.25rem;
-  display: table-cell;
-  vertical-align: middle; !important
+  display: inline-block;
   -webkit-appearance:button;
   margin: 0;
   color: white;
   height: 2.5rem;
   line-height: 2.5rem;
   width: 100%;
-
-  padding:1px;
 
   text-align: center;
   white-space: nowrap;
@@ -253,7 +249,7 @@ button {
   -ms-user-select: none;
   user-select: none;
   background-image: none;
-  border: 1px solid transparent;
+  border: 0 solid transparent;
   border-radius: 0.25rem;
 }
 
@@ -269,6 +265,32 @@ button:focus, a:focus {outline:0;} /*removes chrome accessibility feature*/
 .remove-diner:hover,.remove-diner:focus,.remove-diner:active {
   background-color: #c9302c;
   border-color: #ac2925;
+}
+
+.slash {
+  position:absolute;
+  left:1.15rem;
+  top:0.5rem;
+  background: white;
+  width: 0.2rem;
+  height: 1.5rem;
+  border-radius: 0.25rem;
+  	-webkit-transform: rotate(-45deg);
+	     -moz-transform: rotate(-45deg);
+	       -o-transform: rotate(-45deg);
+}
+
+.backslash {
+  position:absolute;
+  left:1.15rem;
+  top:0.5rem;
+  background: white;
+  width: 0.2rem;
+  height: 1.5rem;
+  border-radius: 0.25rem;
+  	-webkit-transform: rotate(45deg);
+	     -moz-transform: rotate(45deg);
+	       -o-transform: rotate(45deg);
 }
 
 #add-diner {

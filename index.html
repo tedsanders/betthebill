@@ -37,7 +37,7 @@
              if(/iPad|iPhone|iPod/.test(navigator.platform)) {this.setSelectionRange(0,this.value.length)}
              else {this.select()}
              "><!--Looks weird, I know, but solves Mobile Safari bug. Solution is different than for text input because Chrome treats number inputs differently.--></td>
-            <th class="remove-diner-column"><button class="remove-diner" ng-click="removeDiner($index)" type="button" ng-disabled="disableRemoveDiner" tabindex="-1">&times;</button></th>
+            <th class="remove-diner-column"><button class="remove-diner" ng-click="removeDiner($index)" type="button" ng-disabled="disableRemoveDiner" tabindex="-1"><div class="slash"></div><div class="backslash"></div></button></th>
           </tr>
           <tr>
             <th><button id="add-diner" ng-click="addDiner()" type="button">Add Diner</button></th>
